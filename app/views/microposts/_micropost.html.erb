@@ -1,6 +1,31 @@
+<form>
+  <input type="text" id="order_credit_card_number">
+  <div id="card_number_error"></div>
+</form>
+
+<form accept-charset="UTF-8" action="/items" class="new_item" id="new_item" method="post"><div style="margin:0;padding:0;display:inline"><input name="utf8" type="hidden" value="â"><input name="authenticity_token" type="hidden" value="Z6m0Q0z3lBUu10OF+XXP1HwOM3WoFbHBYtrNAQXOm4k="></div>
+  <p>
+    <input id="item_name" name="item[name]" size="30" type="text">
+    <input id="item_submit" name="commit" type="submit" value="Add">
+  </p>
+</form>
+
 <tr>
   <td class="micropost">
     <span class="content"><%= micropost.content %></span>
+
+
+    <menu  id="menu_split" lang="it" >
+      <li>Clone Me1</li>
+      <li>Clone Me2</li>
+
+      <li>Clone Me3</li>
+      <li>Clone Me4</li>
+    </menu>
+
+
+
+
     <span class="timestamp">
       Posted <%= time_ago_in_words(micropost.created_at) %> ago.
     </span>
@@ -9,8 +34,10 @@
   <% if current_user?(user) %>
     <td>
       <%= link_to "delete", micropost, :method => :delete,
-                                       :confirm => "You sure?",
-                                       :title => micropost.content %>
+        :confirm => "You sure?",
+        :title => micropost.content %>
     </td>
   <% end %>
 </tr>
+<script>
+</script>

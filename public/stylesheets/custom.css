@@ -217,7 +217,7 @@ table.microposts tr td.micropost {
   padding-top: 10px;
 }
 
-table.microposts tr td.micropost span.timestamp {
+table.microposts tr td.micropost span.timestamp span.split{
   display: block;
   font-size: 85%;
   color: #666;
@@ -246,4 +246,20 @@ form.new_micropost {
 form.new_micropost textarea {
   height: 4em;
   margin-bottom: 0;
+}
+menu{
+    text-align: left;
+ list-style-type:decimal;
+
+   background-color: #fff;
+    font-family: "Georgia", "Times New Roman", serif;
+    font-size: 2em;
+    color: #fff;
+    text-shadow: 0 -1px 0 #000;
+
+}
+li {
+color: #ff0000
+
+
 }

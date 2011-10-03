@@ -16,7 +16,11 @@ class MicropostsController < ApplicationController
     @micropost.destroy
     redirect_to root_path, :flash => { :success => "Micropost deleted!" }
   end
-  
+ 
+  def edit
+
+  end 
+
   private
   
     def authorized_user

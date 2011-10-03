@@ -4,7 +4,7 @@ gem 'rails', '3.0.9'
 gem 'gravatar_image_tag', '1.0.0.pre2'
 gem 'will_paginate', '3.0.pre2'
 gem 'sqlite3', '1.3.3'
-gem 'jasmine'
+
 
 group :development do
   gem 'rspec-rails', '2.6.1'
@@ -13,6 +13,8 @@ group :development do
 end
 
 group :test do
+
+gem 'jasmine'
   gem 'rspec-rails', '2.6.1'
   gem 'webrat', '0.7.1'
 #  gem 'spork', '0.9.0.rc8'

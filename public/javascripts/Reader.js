@@ -127,22 +127,28 @@ str0 =  $('#order_credit_card_number').text();
      });
  };
 
- $.fn.updateList = function() {
+ $.fn.updateList = function(value) {
 
-     $(this).submit(function(e) {
+          //   alert("updateList");
+//  $(this).hover(function(e) {
+         //    alert("updateList");
              console.log(this);
 
-             value = $("#item_name").val();
+            // value = draftjs
+             //$("#item_name").val();
              //update list 
              //
              //
              var arr = Splitter.split(value);
-             Splitter.add_to_dom(arr);
-             $("#item_name").val("");
 
-             $("#clicks").text("");
+             alert(arr[0]);
+             alert(arr[1]);
+             Splitter.add_to_dom(arr);
+          //   $("#item_name").val("");
+
+         //    $("#clicks").text("");
              e.preventDefault();
-             });
+      //       });
 
  };
 
@@ -163,6 +169,21 @@ str0 =  $('#order_credit_card_number').text();
  };
 
 
+
+ $.fn.populate_li = function() {
+     //return this.each(function() {
+     $(this).click(function(){
+             
+
+             console.log($("#story_txt"));
+             
+alert($("#story_txt").val());
+alert($("#story_txt").text());
+
+    
+             });
+
+ };
 
 
  $.fn.to_submit = function() {

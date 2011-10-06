@@ -3,4 +3,6 @@
 $(function() {
   $("#order_credit_card_number").validateCreditCardNumber();
 
+  $("#btn_show_as_list").populate_li();
+
 });

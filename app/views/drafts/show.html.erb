@@ -1,0 +1,41 @@
+
+<%= form_tag push_draft_path, :method => 'put', :action => "push" ,  :id => @draft do %>
+  <p>
+
+    <input id="item_name2" name="item2" size="30" type="text">
+    <%= submit_tag "Search"  %>
+  </p>
+<% end %>
+<%= link_to "send pushes", push_draft_path(@draft), :method => :put , :pushes => "can i push?" %>
+
+
+<input type="text" id="clicks"></input>
+
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Content:</b>
+  <%= @draft.content %>
+</p>
+
+<p>
+  <b>Title:</b>
+  <%= @draft.title %>
+</p>
+
+<div id="Reader">
+  place holder 
+  
+</div>
+<menu id="menu_split" >
+</menu>
+
+
+<%= link_to 'Edit', edit_draft_path(@draft) %> |
+<%= link_to 'Back', drafts_path %>
+<script type="text/javascript">
+
+<%= render :file => 'drafts/show.js.erb' %>
+</script>
+
+

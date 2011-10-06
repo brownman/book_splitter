@@ -1,15 +1,15 @@
 $(function() {
-    //initiate buttons
-    //$("input:submit, a.button").button();
+  //initiate buttons
+  //$("input:submit, a.button").button();
 
-    var value = '<%= escape_javascript(@draft.content) %>';
+  var value = '<%= escape_javascript(@draft.content) %>';
 
-    var arr = Splitter.split(value);
-    console.log("drafts show.js");
+  var arr = Splitter.split(value);
+  console.log("drafts show.js");
 
-    $("#menu_split").updateDom(arr);
-   // $("#new_item2").submit_it();
-    ///////////////////////////////////////////
+  $("#menu_split").updateDom(arr);
+  // $("#new_item2").submit_it();
+  ///////////////////////////////////////////
 
 
 
@@ -21,17 +21,17 @@ $.fn.updateDom = function(arr) {
 
   $("#menu_split li").remove()
     $.each(arr, function(index, value) {
-        link = $("<li>"+value+"</li>");
-        link.click_li();
-        $("#menu_split").append(link); // check append() examples
-        }
-        )
+      link = $("<li>"+value+"</li>");
+      link.click_li();
+      $("#menu_split").append(link); // check append() examples
+    }
+    )
 }
 
 
 $.fn.submit_it = function() {
- 
-$(this).submit(function(e) {
+
+  $(this).submit(function(e) {
     alert(e);
 
     $.post("/push", 
@@ -39,46 +39,48 @@ $(this).submit(function(e) {
       //item.data
       ,
       function() {
-      
+
       }
       )
-             e.preventDefault();
-        });
+      e.preventDefault();
+  });
 
- 
+
 }
 
 $.fn.click_li = function(arr) {
 
   $(this).click(function () {
 
-      var index = $("#menu_split li").index(this);
-      str0 = ""
-      str0 += $("#clicks").val();   
+    var index = $("#menu_split li").index(this);
+    str0 = ""
+    str0 += $("#clicks").val();   
 
 
 
-      //str0 =  $('#clicks').text(); 
-      text = str0 + "," + index
-      $('#clicks').val(text);
+  //str0 =  $('#clicks').text(); 
+  text = str0 + "," + index
+    $('#clicks').val(text);
 
-      $('#item_name2').val(text);
 
-      $(this).clone(true).insertBefore(this).text("=");
-      }
-      )
+  $(this).clone(true).insertBefore(this).text("=");
+  str = $("#menu_split li").text()
+
+    $('#item_name2').val(str);
+  }
+  )
 }
 
 
 /*
-  $.fn.submit = function() {
-    $(this).submit(function()
-        {
+   $.fn.submit = function() {
+   $(this).submit(function()
+   {
 
-        }
-        )
+   }
+   )
 
-  }
+   }
 
 ///
 
@@ -137,29 +139,29 @@ $("#menu_split1").append(link); // check append() examples
 }
 );
 }
- 
-        var pendingItems = $.parseJSON(localStorage["pendingItems"]);
-        var item = {"data":$(this).serialize(), "item":{"name":$("#item_name").val()}};
-        $("#item_template").tmpl(item).appendTo("#items");
-        pendingItems.push(item);
-        localStorage["pendingItems"] = JSON.stringify(pendingItems)
-        $("#item_name").val("");
-        sendPending();
+
+var pendingItems = $.parseJSON(localStorage["pendingItems"]);
+var item = {"data":$(this).serialize(), "item":{"name":$("#item_name").val()}};
+$("#item_template").tmpl(item).appendTo("#items");
+pendingItems.push(item);
+localStorage["pendingItems"] = JSON.stringify(pendingItems)
+$("#item_name").val("");
+sendPending();
 
 
-    function sendPending() {
-    if (window.navigator.onLine) {
-    var pendingItems = $.parseJSON(localStorage["pendingItems"]);
-    if (pendingItems.length > 0) {
-    var item = pendingItems[0];
-    $.post("/items", item.data, function(data) {
-      var pendingItems = $.parseJSON(localStorage["pendingItems"]);
-      pendingItems.shift();
-      localStorage["pendingItems"] = JSON.stringify(pendingItems)
-      setTimeout(sendPending, 100);
-      });
-    }
-    }
-    }
+function sendPending() {
+if (window.navigator.onLine) {
+var pendingItems = $.parseJSON(localStorage["pendingItems"]);
+if (pendingItems.length > 0) {
+var item = pendingItems[0];
+$.post("/items", item.data, function(data) {
+var pendingItems = $.parseJSON(localStorage["pendingItems"]);
+pendingItems.shift();
+localStorage["pendingItems"] = JSON.stringify(pendingItems)
+setTimeout(sendPending, 100);
+});
+}
+}
+}
 
- */
+*/

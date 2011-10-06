@@ -33,7 +33,7 @@ replace :function(str, sym) {
 replace_one : function(story,sign)
               {
                   //sign = "."
-                  to_sign = sign + "="
+                  to_sign = sign + "$"
                       from="[" + sign  + "]"
                       from_reg = new RegExp(from,"g");
 
@@ -45,12 +45,12 @@ split : function(str){
 
             var story_enc = str 
 
-                var arr_symbols = [',', '!', '.', "?", ":", ";", "'"]
+                var arr_symbols = [',', '!', '.', "?", ":", ";", "'","="]
                 story_enc = this.replace(story_enc, arr_symbols);
 
 
             //split   replace
-            var story_arr = story_enc.split('=');
+            var story_arr = story_enc.split('$');
 
             console.log(story_arr);
 

@@ -1,15 +1,19 @@
 
-<%= form_tag push_draft_path, :method => 'put', :action => "push" ,  :id => @draft do %>
-  <p>
+<div data-id='<%= @draft.id %>' class='me'>
 
-    <input id="item_name2" name="item2" size="30" type="text">
+<menu class="menu_split" id="menu_split<%= @draft.id%>">
+
+</menu>
+
+<%= form_tag push_draft_path, :method => 'put', :action => "push" ,  :id => @draft.id do %>
+    <input id="item_name2" name="item2" size="30" width="10" type="text">
     <%= submit_tag "update clicks"  %>
-  </p>
 <% end %>
-<%= link_to "send pushes", push_draft_path(@draft), :method => :put , :pushes => "can i push?" %>
 
 
-<input type="text" id="clicks"></input>
+
+
+
 
 <p id="notice"><%= notice %></p>
 
@@ -23,19 +27,23 @@
   <%= @draft.title %>
 </p>
 
-<div id="Reader">
-  place holder 
-  
-</div>
-<menu id="menu_split" >
-</menu>
 
 
 <%= link_to 'Edit', edit_draft_path(@draft) %> |
-<%= link_to 'Back', drafts_path %>
+<%= link_to 'Back', compare_path(:id => @draft.compare_id) %>
+
+<input type="text" id="clicks" name="indexes" ></input>
+
+
+
+
+
 <script type="text/javascript">
 
 <%= render :file => 'drafts/show.js.erb' %>
+//str = $("#which_draft" ).attr('data-id')
+//console.log(str);
 </script>
 
+</div>
 

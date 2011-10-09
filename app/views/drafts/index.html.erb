@@ -11,7 +11,9 @@
 
 <% @drafts.each do |draft| %>
   <tr>
+
     <td><%= draft.content %></td>
+    <td><%= draft.id %></td>
     <td><%= draft.title %></td>
     <td><%= link_to 'Show', draft %></td>
     
@@ -22,6 +24,20 @@
 <% end %>
 </table>
 
+
+<table align='top'>
+<tr>
+<% @drafts.each do |draft| %>
+  <td>
+    <%= @draft = draft %>
+    <%= render :template => 'drafts/show' %> 
+ </td>
+<% end %>
+</tr>
+</table>
+
 <br />
 
-<%= link_to 'New Draft', new_draft_path %>
+<%= link_to 'New Draft', new_draft_path( :compare_id => @compare.id) %>
+
+

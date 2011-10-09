@@ -1,31 +1,40 @@
 $(function() {
-  //initiate buttons
-  //$("input:submit, a.button").button();
+
 
   var value = '<%= escape_javascript(@draft.content) %>';
 
   var arr = Splitter.split(value);
-  console.log("drafts show.js");
+  console.log('arr=' + arr);
 
-  $("#menu_split").updateDom(arr);
-  // $("#new_item2").submit_it();
-  ///////////////////////////////////////////
+  str = '#menu_split' + <%= @draft.id %>
 
 
+  var select1 =  $(str)
+  console.log(select1)
+    //    link.click_li();
+  select1.updateDom(arr,select1);
 
+
+//$("#element").attr("attr", value);
+
+//bind event to new inserted items by: live()
+//differ by data-attribute
+//differ by closer wrapper
 });  
 
 
-$.fn.updateDom = function(arr) {
-
-
-  $("#menu_split li").remove()
-    $.each(arr, function(index, value) {
-      link = $("<li>"+value+"</li>");
-      link.click_li();
-      $("#menu_split").append(link); // check append() examples
-    }
-    )
+$.fn.updateDom = function(arr,select) {
+console.log( this)
+  //  $(".menu_split li").remove()
+  $.each(arr, function(index, value) {
+    link = $("<li>"+value+"</li>");
+    //    link.click_li();
+    
+//   $(this).append(link); // check append() examples
+ //   this.append(link); // check append() examples
+    $(select).append(link); // check append() examples
+  }
+  )
 }
 
 
@@ -47,12 +56,12 @@ $.fn.submit_it = function() {
 
 
 }
-
+/*
 $.fn.click_li = function(arr) {
 
   $(this).click(function () {
 
-    var index = $("#menu_split li").index(this);
+    var index = $(".menu_split li").index(this);
     str0 = ""
     str0 += $("#clicks").val();   
 
@@ -64,13 +73,13 @@ $.fn.click_li = function(arr) {
 
 
   $(this).clone(true).insertBefore(this).text("=");
-  str = $("#menu_split li").text()
+  str = $(".menu_split li").text()
 
     $('#item_name2').val(str);
   }
   )
 }
-
+*/
 
 /*
    $.fn.submit = function() {
@@ -109,7 +118,7 @@ $("#clicks").text(str);
 ////////////////////////////
 add_to_dom : function(arr)
 {
-$("#menu_split1 li").remove()
+$(".menu_split1 li").remove()
 $.each(arr, function(index, value) {
 console.log(value);
 link = $("<li>"+value+"</li>");
@@ -133,7 +142,7 @@ $('#order_credit_card_number').val(str0 + "," + str);
 
 })
 //link.click(this.handler1);
-$("#menu_split1").append(link); // check append() examples
+$(".menu_split1").append(link); // check append() examples
 
 // }
 }
@@ -162,6 +171,26 @@ setTimeout(sendPending, 100);
 });
 }
 }
+}
+
+
+$.fn.shit = function(){
+
+
+  //           str = $(".which_draft" ).last().attr('data-id')
+  //  console.log(str);
+  //       alert(str)
+  //initiate buttons
+  //$("input:submit, a.button").button();
+
+
+  // $("#new_item2").submit_it();
+  ///////////////////////////////////////////
+
+
+
+
+
 }
 
 */

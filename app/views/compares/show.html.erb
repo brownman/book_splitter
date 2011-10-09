@@ -1,0 +1,17 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Title:</b>
+  <%= @compare.title %>
+</p>
+
+
+  <strong>Pages:</strong>
+   <%= render :template => 'drafts/index' %>
+
+
+
+
+
+<%= link_to 'Edit', edit_compare_path(@compare) %> |
+<%= link_to 'Back', compares_path %>

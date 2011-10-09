@@ -1,8 +1,10 @@
 class DraftsController < ApplicationController
+
+  before_filter :find_compare , :only => [:index, :new]
   # GET /drafts
   # GET /drafts.xml
   def index
-    @drafts = Draft.all
+    @drafts = @comapre.drafts
 
     respond_to do |format|
       format.html # index.html.erb
@@ -24,7 +26,7 @@ class DraftsController < ApplicationController
   # GET /drafts/new
   # GET /drafts/new.xml
   def new
-    @draft = Draft.new
+    @draft = @compare.drafts.build 
 
     respond_to do |format|
       format.html # new.html.erb
@@ -99,5 +101,9 @@ puts "OK OK "
         format.html { render :action => "new" }
       end
     end
+  end
+  private
+  def find_compare
+    @compare = Compare.find(params[:compare_id])
   end
 end

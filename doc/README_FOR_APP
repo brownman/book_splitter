@@ -1,2 +1,21 @@
 Use this README file to introduce your application and point to useful places in the API for learning more.
 Run "rake doc:app" to generate API documentation for your models, controllers, helpers, and libraries.
+    <%= render :member => draft , :template => 'drafts/show' %>
+
+<%= link_to "send pushes", push_draft_path(@draft), :method => :put , :pushes => "can i push?" %>
+
+<%= form_tag push_draft_path, :method => 'put', :action => "push" ,  :id => @draft do %>
+
+<% end %>
+<div id='draft1' class='me1' data-id='1'>
+    <input id='x' >list</input>
+    
+    <menu id='s'  >
+        <li>first1</li>
+        <li>first2</li>
+        
+    </menu>
+    
+
+
+</div>

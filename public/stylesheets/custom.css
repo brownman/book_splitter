@@ -263,3 +263,10 @@ color: #ff0000
 
 
 }
+.me {
+   # width: 100px;
+    height: 100px;
+    background: #ffb;
+    padding: 10px;
+    border: 2px solid #999;
+}

@@ -1,8 +1,10 @@
 SampleApp::Application.routes.draw do
 
+  resources :compares
+
   resources :drafts do
     member do
-      put :push
+      post :push
     end
   end
 

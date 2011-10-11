@@ -1,10 +1,25 @@
+
+<table> 
+<tr>
+<% @drafts.each do |draft| %>
+  <td >
+    <% @draft = draft %>
+    <%= render :template => 'drafts/show' %> 
+ </td>
+<% end %>
+</tr>
+</table>
 <h1>Listing drafts</h1>
 
 <table>
   <tr>
+
     <th>Content</th>
+    <th>id</th>
     <th>Title</th>
     <th></th>
+    <th></th>
+    
     <th></th>
     <th></th>
   </tr>
@@ -12,29 +27,19 @@
 <% @drafts.each do |draft| %>
   <tr>
 
-    <td><%= draft.content %></td>
+    <td><%= draft.content.length %></td>
     <td><%= draft.id %></td>
     <td><%= draft.title %></td>
     <td><%= link_to 'Show', draft %></td>
     
     <td><%= link_to 'Edit', edit_draft_path(draft) %></td>
-    <td><%= link_to 'Push', push_draft_path(draft) %></td>
     <td><%= link_to 'Destroy', draft, :confirm => 'Are you sure?', :method => :delete %></td>
   </tr>
 <% end %>
 </table>
 
 
-<table align='top'>
-<tr>
-<% @drafts.each do |draft| %>
-  <td>
-    <%= @draft = draft %>
-    <%= render :template => 'drafts/show' %> 
- </td>
-<% end %>
-</tr>
-</table>
+
 
 <br />
 

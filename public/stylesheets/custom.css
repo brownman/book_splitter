@@ -260,13 +260,31 @@ menu{
 }
 li {
 color: #ff0000
+}
 
-
+div
+{
+}
+table{
+    border: 2px solid #999;
+}
+tr{
+    border: 2px solid #999;
+}
+td{
+  vertical-align: top;
+display:box;
+box-align:start;
 }
 .me {
-   # width: 100px;
-    height: 100px;
-    background: #ffb;
-    padding: 10px;
     border: 2px solid #999;
+}
+.menu_split
+{
+    border: 2px solid #999;
+}
+.shit
+{
+    width: 100px;
+    background: #ffb;
 }

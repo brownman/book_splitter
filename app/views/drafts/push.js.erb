@@ -1,0 +1,14 @@
+console.log("ajax");
+//$("#menu_splits").
+
+
+
+ var str = '#menu_split' + <%= @draft.id %>
+
+ var select= $(str)
+  console.log(select)
+ select.replaceWith("<%= escape_javascript(render(:partial => 'drafts/draft')) %>");
+
+
+
+

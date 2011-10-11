@@ -1,13 +1,11 @@
 
 <div data-id='<%= @draft.id %>' class='me'>
+  <a><%= @draft.id %></a>
 
-<menu class="menu_split" id="menu_split<%= @draft.id%>">
-
-</menu>
-
-<%= form_tag push_draft_path, :method => 'put', :action => "push" ,  :id => @draft.id do %>
+  <%= render :partial => @draft %>
+<%= form_tag push_draft_path(@draft), :method => 'post', :action => "push" , :remote => true  do %>
     <input id="item_name2" name="item2" size="30" width="10" type="text">
-    <%= submit_tag "update clicks"  %>
+    <%= submit_tag value="update clicks"  %>
 <% end %>
 
 
@@ -32,18 +30,9 @@
 <%= link_to 'Edit', edit_draft_path(@draft) %> |
 <%= link_to 'Back', compare_path(:id => @draft.compare_id) %>
 
-<input type="text" id="clicks" name="indexes" ></input>
 
 
 
-
-
-<script type="text/javascript">
-
-<%= render :file => 'drafts/show.js.erb' %>
-//str = $("#which_draft" ).attr('data-id')
-//console.log(str);
-</script>
 
 </div>
 

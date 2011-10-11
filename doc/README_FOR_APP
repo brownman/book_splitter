@@ -19,3 +19,6 @@ Run "rake doc:app" to generate API documentation for your models, controllers, h
 
 
 </div>
+<p>
+<input type="text" id="clicks" name="indexes" >clicks</input>
+</p>

@@ -4,7 +4,8 @@ class DraftsController < ApplicationController
   # GET /drafts
   # GET /drafts.xml
   def index
-    @drafts = @comapre.drafts
+    @drafts = @comapre.reorder('id')
+    #order("id DESC")
 
     respond_to do |format|
       format.html # index.html.erb
@@ -96,7 +97,14 @@ puts "OK OK "
 
     respond_to do |format|
       if @draft.save
-        format.html { redirect_to(@draft, :notice => 'Draft was successfully created.') }
+        format.html { 
+          redirect_to(
+           # @draft.compare_id  , 
+            compare_path(:id => @draft.compare_id ),
+            :notice => 'Draft was successfully created.'
+                     )
+        }
+        format.js
       else
         format.html { render :action => "new" }
       end

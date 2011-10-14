@@ -10,40 +10,43 @@ $(function() {
 
                    $(this).before("<li>=</li>");
 
+                   //index relative - in scope of ".me"
+                   var index = $(this).closest(".me").find(".menu_split li").index(this);
 
-  var index = $(".menu_split li").index(this);
-  
- str = $(".menu_split")
-
-
-                   alert(index)
-                   console.log(str)
-                   //              str = $(this).closest(".me").attr('data-id')
-//find element in current scope
-                   var select =  $(this).closest(".me");
+                   str = $(".menu_split")
 
 
-                   var content = select.find("li").text()
+        //    alert("let's remove index:" + index)
+        console.log(str)
+        //              str = $(this).closest(".me").attr('data-id')
+        //find element in current scope
+        var select =  $(this).closest(".me");
 
 
-
+    var content = select.find("li").text()
 
 
         select.find("input").val(content);
-                   
-
-
-var nth = "li:nth-child(" + index + ")"
-var str = $(".menu_split").find(nth).text()
-
-alert(str)
-if(str=="===")
-{
 
 
 
-$(".menu_split").find(nth).remove()
-}
+    var nth = "li:nth-child(" + index + ")"
+        var str = $(".menu_split").find(nth).text()
+
+        //    alert(str)
+        var str_exp = ""
+        var times = $(".me").length
+        for(var i=0; i<times ; i++)
+        {
+            str_exp += "="
+        }
+    //alert("str_exp" + str_exp);
+
+    var str_eq = "="
+        if(str == str_exp)
+        {
+            $(".menu_split").find(nth).remove()
+        }
 
 
                }
@@ -56,4 +59,18 @@ $(".menu_split").find(nth).remove()
 //               $(select("input")).val("x");
 //        select.("input").text(str);
 
+
+$.fn.updateDom = function(arr,select) {
+    console.log( this)
+        //  $(".menu_split li").remove()
+        $.each(arr, function(index, value) {
+            link = $("<li>"+value+"</li>");
+            //    link.click_li();
+
+            //   $(this).append(link); // check append() examples
+            //   this.append(link); // check append() examples
+            $(select).append(link); // check append() examples
+        }
+        )
+}
 

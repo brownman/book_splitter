@@ -1,4 +1,15 @@
-describe("CreditCard", function() {
+describe("Reader", function() {
+    
+  it("click on item of list should add row before", function() {
+    loadFixtures("many_lists.html");
+    str = $( $("#menu_split7 li").first() ).click();
+
+    expect(str).toHaveText("=");
+  });
+
+
+
+
   it("cleans number by removing spaces and dashes", function() {
     expect(CreditCard.cleanNumber("123 4-5")).toEqual("12345");
   });

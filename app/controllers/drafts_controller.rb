@@ -79,7 +79,13 @@ class DraftsController < ApplicationController
     @draft.destroy
 
     respond_to do |format|
-      format.html { redirect_to(drafts_url) }
+      format.html {  redirect_to(
+           # @draft.compare_id  , 
+            compare_path(:id => @draft.compare_id ),
+            :notice => 'Draft was successfully deleted.'
+                     )
+        }
+
       format.xml  { head :ok }
     end
   end

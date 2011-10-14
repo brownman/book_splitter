@@ -24,20 +24,6 @@ $(function() {
 });  
 
 
-$.fn.updateDom = function(arr,select) {
-console.log( this)
-  //  $(".menu_split li").remove()
-  $.each(arr, function(index, value) {
-    link = $("<li>"+value+"</li>");
-    //    link.click_li();
-    
-//   $(this).append(link); // check append() examples
- //   this.append(link); // check append() examples
-    $(select).append(link); // check append() examples
-  }
-  )
-}
-
 
 $.fn.submit_it = function() {
 

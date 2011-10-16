@@ -20,16 +20,8 @@ $(function() {
         console.log(str)
         //              str = $(this).closest(".me").attr('data-id')
         //find element in current scope
-        var select =  $(this).closest(".me");
-
-
-    var content = select.find("li").text()
-
-
-        select.find("#input_story").first().val(content);
-
-
-
+$(this).update_input_field()
+  
     var nth = "li:nth-child(" + index + ")"
         var str = $(".menu_split").find(nth).text()
 
@@ -45,7 +37,13 @@ $(function() {
     var str_eq = "="
         if(str == str_exp)
         {
-            $(".menu_split").find(nth).remove()
+            $(".menu_split").each(function(){
+            
+                $(this).find(nth).remove()
+$(this).update_input_field()
+                
+            })
+
         }
 
 
@@ -73,4 +71,16 @@ $.fn.updateDom = function(arr,select) {
         }
         )
 }
+$.fn.update_input_field = function()
+    {
+            var select =  $(this).closest(".me");
 
+
+    var content = select.find("li").text()
+
+
+        select.find("#input_story").first().val(content);
+
+
+
+    }

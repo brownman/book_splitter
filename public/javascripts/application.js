@@ -26,7 +26,7 @@ $(function() {
     var content = select.find("li").text()
 
 
-        select.find("input").val(content);
+        select.find("#input_story").first().val(content);
 
 
 

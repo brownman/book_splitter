@@ -155,7 +155,7 @@ div.field, div.actions {
 
 #error_explanation {
   #width: 400px;
-  border: 2px so0id red;
+  border: 2px solid red;
   padding: 7px;
   padding-bottom: 12px;
   margin-bottom: 20px;
@@ -249,79 +249,70 @@ form.new_micropost textarea {
 }
 menu{
   #  text-align: left;
- list-style-type:decimal;
+# list-style-type:decimal;
 
    background-color: #fff;
    # font-family: "Georgia", "Times New Roman", serif;
    # font-size: 2em;
    # color: #fff;
    # text-shadow: 0 -1px 0 #000;
- # width: 100%
+   width: 50%
 
+}
+div
+{
+}
+table{
+ #   border: 2px solid #999;
+}
+tr{
+  #  border: 2px solid #999;
 }
 
 .me {
   #  border: 2px solid #999;
-    width: 100% 
-
-  background: #0f0;
+    width: 98% 
 }
 .menu_split
 {
   #  border: 2px solid #999;
-
-  background: #ccf;
-  width: 90%
-
+  width: 50%
 }
 
 table {
-    table-layout:fixed
+   # table-layout:fixed
    width: 100%
-
-  background: #ffa;
- #   border: 2px solid #999;
 }
-
-tr {
-
-  #  border: 2px solid #999;
-
-  background: #caf;
-#color: #ff00ff
-
-}
-li {
-
-overflow:auto;
-#resize: both
-#overflow: auto
-#color: #ff0000
-
-
-#max-width:150px;
-
-    border: 1px solid #999;
-
-
-
-height:3em;
-
-width:90%;
-}
-td{
+td {
     #overflow:hidden; 
  #   white-space:
 
+#padding: 0px
 
-padding-left:1px;
+}
+tr {
 
+
+  background: #caf;
+color: #ff00ff
+#padding: 0px
+}
+li {
+
+#resize: both
+#overflow: auto
+#color: #ff0000
+#width:10px;
+#height:10px;
+#max-width:150px;
+
+ #   border: 1em solid #999;
+
+
+}
+td{
   vertical-align: top;
-  horizontal-align: left
- display:box;
-box-align:start;
- #width: 100%
-
-  background: #c0f;
-width: 40%
+# display:box;
+#box-align:start;
+ width: 100px
 }

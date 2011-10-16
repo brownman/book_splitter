@@ -4,7 +4,7 @@
 
   <%= render :partial => @draft %>
 <%= form_tag push_draft_path(@draft), :method => 'post', :action => "push" , :remote => true  do %>
-    <input id="item_name2" name="item2" size="30" width="10" type="text">
+    <input id="input_story" name="item2" size="30" width="10" type="text">
     <%= submit_tag value="update clicks"  %>
 <% end %>
 

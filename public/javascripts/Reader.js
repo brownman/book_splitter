@@ -68,7 +68,7 @@ var Splitter = {
     {
 
     },
-    add_to_dom : function(arr)
+    add_to_dom1 : function(arr)
     {
         $("#menu_split1 li").remove()
             $.each(arr, function(index, value) {

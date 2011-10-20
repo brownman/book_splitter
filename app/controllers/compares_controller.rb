@@ -1,11 +1,11 @@
 class ComparesController < ApplicationController
+  before_filter :find_user , :only => [:index, :new]
 
 #  before_filter :find_chapter , :only => [:index]
   # GET /compares
   # GET /compares.xml
   def index
-    @compares = Compare.all
-
+  @compares = @user.compares
     respond_to do |format|
       format.html # index.html.erb
       format.xml  { render :xml => @compares }
@@ -26,7 +26,7 @@ class ComparesController < ApplicationController
   # GET /compares/new
   # GET /compares/new.xml
   def new
-    @compare = Compare.new
+      @compare = @user.compares.build
 
     respond_to do |format|
       format.html # new.html.erb
@@ -83,5 +83,9 @@ class ComparesController < ApplicationController
     end
   end
   
+  private
+  def find_user
+    @user = User.find(params[:user_id])
+  end
 
 end

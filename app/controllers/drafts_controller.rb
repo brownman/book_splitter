@@ -4,7 +4,7 @@ class DraftsController < ApplicationController
   # GET /drafts
   # GET /drafts.xml
   def index
-    @drafts = @comapre.reorder('id')
+    @drafts = @compare.drafts.reorder('id')
     #order("id DESC")
 
     respond_to do |format|

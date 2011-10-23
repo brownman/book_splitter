@@ -5,6 +5,8 @@ class PagesController < ApplicationController
     if signed_in?
       @micropost = Micropost.new
       @feed_items = current_user.feed.paginate(:page => params[:page])
+      # compares_path , :id => current_user.id
+      @compares = current_user.compares
     end
   end
 

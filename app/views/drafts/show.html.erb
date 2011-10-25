@@ -1,34 +1,26 @@
 
 <div data-id='<%= @draft.id %>' class='me'>
-  <a><%= @draft.id %></a>
+
+  <a><%= @draft.title %></a>
+
+  <%= form_tag push_draft_path(@draft), :method => 'post', :action => "push" , :remote => true  do %>
+    <input id="input_story" value='<%= raw(@draft.content) %>' name="item2" width="10" type="text">
+    <%= submit_tag value="save"  %>
+  <% end %>
+
 
   <%= render :partial => @draft %>
-<%= form_tag push_draft_path(@draft), :method => 'post', :action => "push" , :remote => true  do %>
-    <input id="input_story" name="item2" size="30" width="10" type="text">
-    <%= submit_tag value="update clicks"  %>
-<% end %>
 
 
 
 
 
-
-<p id="notice"><%= notice %></p>
-
-<p>
-  <b>Content:</b>
-  <%= @draft.content %>
-</p>
-
-<p>
-  <b>Title:</b>
-  <%= @draft.title %>
-</p>
+  <p id="notice"><%= notice %></p>
 
 
 
-<%= link_to 'Edit', edit_draft_path(@draft) %> |
-<%= link_to 'Back', compare_path(:id => @draft.compare_id) %>
+  <%= link_to 'Edit', edit_draft_path(@draft) %> |
+  <%= link_to 'Back', compare_path(:id => @draft.compare_id) %>
 
 
 

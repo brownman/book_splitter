@@ -4,7 +4,7 @@
   <a><%= @draft.title %></a>
 
   <%= form_tag push_draft_path(@draft), :method => 'post', :action => "push" , :remote => true  do %>
-    <input id="input_story" value='<%= raw(@draft.content) %>' name="item2" width="10" type="text">
+    <input id="input_story"  name="item2" width="10" type="text">
     <%= submit_tag value="save"  %>
   <% end %>
 

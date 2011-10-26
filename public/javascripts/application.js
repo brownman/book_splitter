@@ -68,8 +68,14 @@ $.fn.updateDom = function(arr,select) {
             //   $(this).append(link); // check append() examples
             //   this.append(link); // check append() examples
             $(select).append(link); // check append() examples
+            
         }
+
+
         )
+
+$(this).update_input_field();
+        
 }
 $.fn.update_input_field = function()
     {

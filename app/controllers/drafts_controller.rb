@@ -103,6 +103,8 @@ puts "OK OK "
 
     respond_to do |format|
       if @draft.save
+@last_save = Time.now - @draft.updated_at 
+puts @last_save
         format.html { 
           redirect_to(
            # @draft.compare_id  , 
@@ -113,6 +115,7 @@ puts "OK OK "
         format.js
       else
         format.html { render :action => "new" }
+        format.js
       end
     end
   end

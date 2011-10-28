@@ -22,3 +22,12 @@ Run "rake doc:app" to generate API documentation for your models, controllers, h
 <p>
 <input type="text" id="clicks" name="indexes" >clicks</input>
 </p>
+<div id="timestamp<%= @draft.id %>" >
+      Posted '<%= (@last_save) %>'  ago.
+    </div>
+str2 = '#timestamp' + <%= @draft.id %>
+
+var select2 = $(str2)
+
+//var str_last = <%= @last_save %>
+//select2.update_time(str_last)

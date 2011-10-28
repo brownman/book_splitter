@@ -1,184 +1,23 @@
 $(function() {
 
+//alert(<%= @draft.id %>)
+
+
+  str = '#menu_split' + <%= @draft.id %>
 
   var value = '<%= escape_javascript(@draft.content) %>';
   
   //$('#item_name2').val(str);
   
-  var arr = Splitter.split(value);
-  console.log('arr=' + arr);
-
-  str = '#menu_split' + <%= @draft.id %>
-
-
   var select1 =  $(str)
-  console.log(select1)
-    //    link.click_li();
-  select1.updateDom(arr,select1);
 
 
-//$("#element").attr("attr", value);
+  select1.generate_dom(value)
 
-//bind event to new inserted items by: live()
-//differ by data-attribute
-//differ by closer wrapper
+
+
+
+
 });  
 
 
-
-$.fn.submit_it = function() {
-
-  $(this).submit(function(e) {
-    alert(e);
-
-    $.post("/push", 
-      "ofer_post"
-      //item.data
-      ,
-      function() {
-
-      }
-      )
-      e.preventDefault();
-  });
-
-
-}
-/*
-$.fn.click_li = function(arr) {
-
-  $(this).click(function () {
-
-    var index = $(".menu_split li").index(this);
-    str0 = ""
-    str0 += $("#clicks").val();   
-
-
-
-  //str0 =  $('#clicks').text(); 
-  text = str0 + "," + index
-    $('#clicks').val(text);
-
-
-  $(this).clone(true).insertBefore(this).text("=");
-  str = $(".menu_split li").text()
-
-    $('#item_name2').val(str);
-  }
-  )
-}
-*/
-
-/*
-   $.fn.submit = function() {
-   $(this).submit(function()
-   {
-
-   }
-   )
-
-   }
-
-///
-
-/*
-//update onClick 
-link.click(function () {
-
-
-console.log(this);
-str = ""
-str += $("#clicks").text();   
-$(this).clone(true).insertBefore(this).text("=");
-var index = $("li").index(this);
-
-// INDEXES PRESSED
-str =   index + "," + str
-$("#clicks").text(str);
-//$("#new_item2").text = str
-//str0 =  $('#order_credit_card_number').text(); 
-//$('#order_credit_card_number').val(str0 + "," + str);
-
-//send to server: story + string of clicks
-//str = $(li).html
-}
-)
-////////////////////////////
-add_to_dom : function(arr)
-{
-$(".menu_split1 li").remove()
-$.each(arr, function(index, value) {
-console.log(value);
-link = $("<li>"+value+"</li>");
-
-//this.handler1(link);
-
-//update onClick 
-link.click(function () {
-console.log(this);
-str = ""
-str += $("#clicks").text();   
-$(this).clone(true).insertBefore(this).text("=");
-var index = $("li").index(this);
-str =   index + "," + str
-$("#clicks").text(str);
-$("#new_item2").text = str
-str0 =  $('#order_credit_card_number').text(); 
-$('#order_credit_card_number').val(str0 + "," + str);
-//send to server: story + string of clicks
-//str = $(li).html
-
-})
-//link.click(this.handler1);
-$(".menu_split1").append(link); // check append() examples
-
-// }
-}
-);
-}
-
-var pendingItems = $.parseJSON(localStorage["pendingItems"]);
-var item = {"data":$(this).serialize(), "item":{"name":$("#item_name").val()}};
-$("#item_template").tmpl(item).appendTo("#items");
-pendingItems.push(item);
-localStorage["pendingItems"] = JSON.stringify(pendingItems)
-$("#item_name").val("");
-sendPending();
-
-
-function sendPending() {
-if (window.navigator.onLine) {
-var pendingItems = $.parseJSON(localStorage["pendingItems"]);
-if (pendingItems.length > 0) {
-var item = pendingItems[0];
-$.post("/items", item.data, function(data) {
-var pendingItems = $.parseJSON(localStorage["pendingItems"]);
-pendingItems.shift();
-localStorage["pendingItems"] = JSON.stringify(pendingItems)
-setTimeout(sendPending, 100);
-});
-}
-}
-}
-
-
-$.fn.shit = function(){
-
-
-  //           str = $(".which_draft" ).last().attr('data-id')
-  //  console.log(str);
-  //       alert(str)
-  //initiate buttons
-  //$("input:submit, a.button").button();
-
-
-  // $("#new_item2").submit_it();
-  ///////////////////////////////////////////
-
-
-
-
-
-}
-
-*/

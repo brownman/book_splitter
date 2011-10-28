@@ -1,10 +1,42 @@
 describe("Reader", function() {
-    
+  
+  it("logic: split from string to array by symbols", function() {
+   str =  "first line.second line, third line"
+   expect(Splitter.split(str).length).toEqual(3);
+  });
+  
+  it("jquery: populate dom with array", function() {
+     loadFixtures("many_lists.html");
+
+    var num = $("#menu_split1 li").size() 
+    expect(num).toEqual(0);
+    //populate the dom.menu with array
+    //
+    var selector = $("#menu_split1")
+    var arr = 
+    [
+   'first line', 
+   'second line',
+   'third line',
+   'fourth line'
+
+    ]
+
+  //populate_dom 
+    selector.updateDom(arr);
+    //selector.find('li').size()
+    var num = $("#menu_split1 li").size() 
+    expect(num).toEqual(4);
+  
+  });
+  
+
   it("click on item of list should add row before", function() {
     loadFixtures("many_lists.html");
-    str = $( $("#menu_split7 li").first() ).click();
+    str = $( $("#menu_split7 li").first() )
 
-    expect(str).toHaveText("=");
+    expect(str).toHaveText("11.");
+    
   });
 
 
@@ -51,7 +83,7 @@ expect(str).toEqual("");
 
 //.split("=") ).
 //toEqual([]);
-   expect(Splitter.split(",,,hello.. !! world. ok ?").length).toEqual(10);
+
   });
 
  

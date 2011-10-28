@@ -1,3 +1,13 @@
+<div class="div_split" id="div_split<%= @draft.id%>">
+<% @str1 =  (Time.now - @draft.updated_at).to_i %>
+ <p height = 2em >
+<% if @str1 < 60 %>
+  less than a minute ago
+<% else %>
+
+  more than a minute ago
+<% end %>
+</p>
 <menu class="menu_split" id="menu_split<%= @draft.id%>">
 </menu>
 
@@ -8,3 +18,4 @@
 //console.log(str);
 </script>
 
+</div>

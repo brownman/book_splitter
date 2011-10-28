@@ -58,35 +58,3 @@ $(this).update_input_field()
 //        select.("input").text(str);
 
 
-$.fn.updateDom = function(arr,select) {
-    console.log( this)
-        //  $(".menu_split li").remove()
-        $.each(arr, function(index, value) {
-            link = $("<li>"+value+"</li>");
-            //    link.click_li();
-
-            //   $(this).append(link); // check append() examples
-            //   this.append(link); // check append() examples
-            $(select).append(link); // check append() examples
-            
-        }
-
-
-        )
-
-$(this).update_input_field();
-        
-}
-$.fn.update_input_field = function()
-    {
-            var select =  $(this).closest(".me");
-
-
-    var content = select.find("li").text()
-
-
-        select.find("#input_story").first().val(content);
-
-
-
-    }

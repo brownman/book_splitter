@@ -1,3 +1,83 @@
+// Place your application-specific JavaScript functions and classes here
+// This file is automatically included by javascript_include_tag :defaults
+$(function() {
+    // $("#order_credit_card_number").validateCreditCardNumber();
+
+    //$("#btn_show_as_list").populate_li();
+    $(".menu_split li").live({
+
+        click: function() {
+
+  $(this).update_save_state("should save")
+    $(this).addClass('clicked1');
+                   $(this).before("<li>=</li>");
+
+                   //index relative - in scope of ".me"
+                   var index = $(this).closest(".me").find(".menu_split li").index(this);
+
+                   str = $(".menu_split")
+
+
+        //    alert("let's remove index:" + index)
+        console.log(str)
+        //              str = $(this).closest(".me").attr('data-id')
+        //find element in current scope
+$(this).update_input_field()
+  
+    var nth = "li:nth-child(" + index + ")"
+        var str = $(".menu_split").find(nth).text()
+
+        //    alert(str)
+        var str_exp = ""
+        var times = $(".me").length
+        for(var i=0; i<times ; i++)
+        {
+            str_exp += "="
+        }
+    //alert("str_exp" + str_exp);
+
+    var str_eq = "="
+        if(str == str_exp)
+        {
+            $(".menu_split").each(function(){
+            
+
+  $(this).update_save_state("should save")
+                $(this).find(nth).remove()
+$(this).update_input_field()
+                
+            })
+
+        }
+
+
+               }
+
+
+    });  
+});
+//   console.log(select);
+//$("input").val(str)
+//               $(select("input")).val("x");
+//        select.("input").text(str);
+
+
+function createList(items) {
+  var list = $('<ul/>');
+
+  $.each(items, function(i, item) {
+    if (typeof item !== 'string') { return; }
+    list.append(
+      $('<li>' + item + '</li>')
+        .click(function() {
+          $(this).addClass('clicked');
+        })
+    );
+  });
+
+  return list;
+}
+
 var CreditCard = {
 cleanNumber: function(number) {
                  return number.replace(/[- ]/g, "");
@@ -130,7 +210,7 @@ $(this).html(str)
 
 
  $.fn.updateDom = function(arr) {
- selector = this 
+ selector = $(this) 
  console.log( this)
  //  $(".menu_split li").remove()
  $.each(arr, function(index, value) {
@@ -158,21 +238,40 @@ $(this).html(str)
      var select =  $(this).closest(str);
      return select;
  }
+ $.fn.get_child_input = function()
+ {
 
+     var select =  $(this).find("#input_story").first()
+     return select;
+ }
 
  $.fn.stringify_all_li = function()
  {
      var content = $(this).find("li").text()
          return content
  }
+ $.fn.get_child_save_state = function()
+ {
+     var content = $(this).find(".update_state").text()
+         return content
+ }
+ $.fn.set_child_save_state = function(str)
+ {
+$(this).find(".update_state").text(str)
+ }
 
  $.fn.update_input_field = function()
  {
      var select =  $(this).get_parent_class(".me")
 content = $(select).stringify_all_li()
-         select.find("#input_story").first().val(content);
+        select.get_child_input().val(content);
  }
- 
+
+ $.fn.update_save_state = function(str)
+{
+selector1 = $(this).get_parent_class(".me")
+selector1.set_child_save_state(str)
+} 
  $.fn.validateCreditCardNumber = function() {
      return this.each(function() {
              $(this).blur(function() {

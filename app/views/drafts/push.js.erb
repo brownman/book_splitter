@@ -2,12 +2,37 @@ console.log("ajax");
 //$("#menu_splits").
 
 //alert(<%= @last_save %>)
+var str_id = <%= @draft.id %>
 
- var str = '#div_split' + <%= @draft.id %>
+ //var str = '#div_split' + <%= @draft.id %>
 
- var select= $(str)
+
+//str2 = $($('.me[data-id="1"]').
+
+//alert("str: "  + str)
+
+//str2 = $(this).closest(".me").find(".div_split").id;
+var str_selector = ".me[data-id='<%= @draft.id %>']" 
+//alert(str_selector)
+var selector2 = $(str_selector).find('.div_split')
+//var str2 = selector2.attr('id')
+
+//console.log($('.me').attr('data-id', str_id))
+
+//.find(".div_split").id;
+
+
+
+//str2 = $(".me").attr('data-id', str_id).find(".div_split").id;
+
+
+
+//alert("str2: "  + str_selector)
+// var select= $(str)
+
+
  // console.log(select)
- select.replaceWith("<%= escape_javascript(render(:partial => 'drafts/draft')) %>");
+ selector2.replaceWith("<%= escape_javascript(render(:partial => 'drafts/draft')) %>");
 
 
 

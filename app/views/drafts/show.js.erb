@@ -2,17 +2,20 @@ $(function() {
 
 //alert(<%= @draft.id %>)
 
-
-  str = '#menu_split' + <%= @draft.id %>
+var str_selector = ".me[data-id='<%= @draft.id %>']" 
+//alert(str_selector)
+var selector2 = $(str_selector).find('.menu_split')
+//var str2 = selector2.attr('id')
+ // str = '#menu_split' + <%= @draft.id %>
 
   var value = '<%= escape_javascript(@draft.content) %>';
   
   //$('#item_name2').val(str);
   
-  var select1 =  $(str)
+//  var select1 =  $(str)
 
 
-  select1.generate_dom(value)
+  selector2.generate_dom(value)
 
 
 

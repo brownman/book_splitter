@@ -19,7 +19,7 @@ $(function() {
 
 
         //    alert("let's remove index:" + index)
-        console.log(str)
+//        console.log(str)
         //              str = $(this).closest(".me").attr('data-id')
         //find element in current scope
 $(this).update_input_field()
@@ -132,7 +132,7 @@ split : function(str){
             //split   replace
             var story_arr = story_enc.split('$');
 
-            console.log(story_arr);
+        //    console.log(story_arr);
 
             //each symbol to replace str
             //            this.trace(story_arr);
@@ -190,20 +190,20 @@ add_to_dom1 : function(arr)
  $.fn.generate_dom = function(value) {
 
  var arr = Splitter.split(value);
- console.log('arr=' + arr);
+ //console.log('arr=' + arr);
 
 
 
 
  //console.log(this)
- console.log($(this))
+ //console.log($(this))
  //    link.click_li();
  $(this).updateDom(arr, this);
  };
 
  $.fn.update_time = function(str) {
  alert(str)
- console.log(this)
+ //console.log(this)
 $(this).html(str)
  };
  
@@ -211,7 +211,7 @@ $(this).html(str)
 
  $.fn.updateDom = function(arr) {
  selector = $(this) 
- console.log( this)
+ //console.log( this)
  //  $(".menu_split li").remove()
  $.each(arr, function(index, value) {
      link = $("<li>"+value+"</li>");
@@ -241,7 +241,7 @@ $(this).html(str)
  $.fn.get_child_input = function()
  {
 
-     var select =  $(this).find("#input_story").first()
+     var select =  $(this).find(".input_story").first()
      return select;
  }
 

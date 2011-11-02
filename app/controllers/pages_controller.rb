@@ -16,6 +16,9 @@ class PagesController < ApplicationController
   
   def about
     @title = "About"
+
+#puts ActionView::Helpers::JavaScriptHelper::JS_ESCAPE_MAP
+
   end
   
   def help

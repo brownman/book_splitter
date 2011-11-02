@@ -260,22 +260,6 @@ menu{
     # width: 100%
 
 }
-
-.me {
-    #  border: 2px solid #999;
-    width: 97% 
-
-    background: #fff;
-}
-.menu_split
-{
-    #  border: 2px solid #999;
-
-    background: #fff;
-    width: 90%
-
-}
-
 table {
     table-layout:fixed
     width: 97%
@@ -293,24 +277,7 @@ tr {
     #color: #ff00ff
 
 }
-menu li {
 
-    overflow:auto;
-    #resize: both
-    #overflow: auto
-    #color: #ff0000
-
-
-    #max-width:150px;
-
-    border: 1px solid #999;
-
-
-
-    height:3em;
-
-    width:90%;
-}
 td{
     #overflow:hidden; 
     #   white-space:
@@ -327,6 +294,7 @@ td{
     background: #ccc;
     width: 40%
 }
+
 #booktitle{
 
 width: 50%;
@@ -336,4 +304,63 @@ color: #fff;
    horizontal-align: center;
     display:box;
     box-align:center;
+}
+
+.me {
+    #  border: 2px solid #999;
+   # width: 48px 
+
+    background: #fff;
+
+padding : 1em
+}
+.me1 a {
+
+  height: 5em
+padding: 4em
+  font-size: 120%;
+
+ font-weight: bold;
+    background: #fff;
+   
+position:relative;
+left:50%;
+
+
+  
+}
+.me .menu_split
+{
+    #  border: 2px solid #999;
+
+    background: #fff;
+ #   width: 90%
+
+#margin-left:0px;
+
+padding : 1em
+}
+
+.menu_split li {
+
+
+
+    #resize: both
+    #overflow: auto
+    #color: #ff0000
+
+
+    #max-width:150px;
+
+    border: 1px solid #999;
+
+
+
+    height:3em;
+
+    width:230px;
+
+    overflow:auto;
+
+
 }

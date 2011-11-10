@@ -1,0 +1,29 @@
+<%= form_for(@priority) do |f| %>
+  <% if @priority.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@priority.errors.count, "error") %> prohibited this priority from being saved:</h2>
+
+      <ul>
+      <% @priority.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :todo %><br />
+    <%= f.text_field :todo %>
+  </div>
+  <div class="field">
+    <%= f.label :target %><br />
+    <%= f.text_field :target %>
+  </div>
+  <div class="field">
+    <%= f.label :conclusion %><br />
+    <%= f.text_field :conclusion %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

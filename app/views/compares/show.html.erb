@@ -14,4 +14,7 @@
 
 
 <%= link_to 'Edit', edit_compare_path(@compare) %> |
-<%= link_to 'Back', compares_path(:user_id => current_user.id) %>
+
+<%= link_to 'Back', compares_path(:user_id => current_user.id) %> 
+| 
+<%= link_to 'BackUser', user_path(:id => current_user.id) %>

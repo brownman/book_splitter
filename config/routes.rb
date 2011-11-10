@@ -1,5 +1,17 @@
 SampleApp::Application.routes.draw do
 
+  resources :quizes
+
+  resources :todos
+
+  resources :priorities
+
+  resources :smarts
+
+  resources :braves
+
+  resources :posts
+
   resources :compares
 
   resources :drafts do
@@ -18,7 +30,7 @@ SampleApp::Application.routes.draw do
   resources :microposts,    :only => [:create, :destroy]
   resources :relationships, :only => [:create, :destroy]
   
-  root :to => "pages#home"
+  
 
   match '/contact', :to => 'pages#contact'
   match '/about',   :to => 'pages#about'
@@ -85,4 +97,10 @@ SampleApp::Application.routes.draw do
   # This is a legacy wild controller route that's not recommended for RESTful applications.
   # Note: This route will make all actions in every controller accessible via GET requests.
   # match ':controller(/:action(/:id(.:format)))'
+  #
+    resources :posts
+ # root :to => "posts#index"
+
+  root :to => "pages#home"
+
 end

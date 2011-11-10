@@ -12,6 +12,11 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
     @microposts = @user.microposts.paginate(:page => params[:page])
     @compares = @user.compares
+
+
+    @todos = @user.todos
+    @smarts = @user.smarts
+    
     @title = @user.name
   end
 

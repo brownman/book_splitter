@@ -7,6 +7,9 @@ class PagesController < ApplicationController
       @feed_items = current_user.feed.paginate(:page => params[:page])
       # compares_path , :id => current_user.id
       @compares = current_user.compares
+
+      @smarts = current_user.smarts
+      @todos = current_user.todos
     end
   end
 

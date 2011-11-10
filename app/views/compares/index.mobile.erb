@@ -1,0 +1,25 @@
+<div data-role="header">
+<h1>Listing compares</h1>
+</div>
+
+<table>
+  <tr>
+    <th>Title</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @compares.each do |compare| %>
+  <tr>
+    <td><%= compare.title %></td>
+    <td><%= link_to 'Show', compare %></td>
+    <td><%= link_to 'Edit', edit_compare_path(compare) %></td>
+    <td><%= link_to 'Destroy', compare, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Compare', new_compare_path(:user_id => current_user.id) %>

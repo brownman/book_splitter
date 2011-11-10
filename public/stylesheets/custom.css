@@ -123,6 +123,8 @@ table.profile {
 td.main {
   width: 70%;
   padding: 1em;
+
+  background: #cfc;
 }
 
 td.sidebar {
@@ -273,7 +275,7 @@ tr {
 
     #  border: 2px solid #999;
 
-    background: #aaa;
+    background: #fef;
     #color: #ff00ff
 
 }
@@ -291,7 +293,7 @@ td{
     box-align:start;
     #width: 100%
 
-    background: #ccc;
+    background: #fff;
     width: 40%
 }
 

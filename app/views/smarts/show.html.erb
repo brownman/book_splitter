@@ -1,0 +1,18 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Question:</b>
+  <%= @smart.question %>
+</p>
+
+<p>
+  <b>Answer:</b>
+  <%= @smart.answer %>
+</p>
+
+
+<%= link_to 'Edit', edit_smart_path(@smart) %> |
+
+<%= link_to 'Back', smarts_path(:user_id => current_user.id) %>
+| 
+<%= link_to 'BackUser', user_path(:id => current_user.id) %>

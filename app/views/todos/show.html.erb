@@ -1,0 +1,23 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Action:</b>
+  <%= @todo.action %>
+</p>
+
+<p>
+  <b>Target:</b>
+  <%= @todo.target %>
+</p>
+
+<p>
+  <b>Conclusion:</b>
+  <%= @todo.conclusion %>
+</p>
+
+
+<%= link_to 'Edit', edit_todo_path(@todo) %> |
+
+<%= link_to 'Back', todos_path(:user_id => current_user.id) %>
+| 
+<%= link_to 'BackUser', user_path(:id => current_user.id) %>

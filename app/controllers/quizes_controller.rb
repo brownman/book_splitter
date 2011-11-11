@@ -1,8 +1,10 @@
 class QuizesController < ApplicationController
+
+  before_filter :find_compare , :only => [:index, :new]
   # GET /quizes
   # GET /quizes.xml
   def index
-    @quizes = Quize.all
+    @quizes = @compare.quizes
 
     respond_to do |format|
       format.html # index.html.erb
@@ -24,7 +26,7 @@ class QuizesController < ApplicationController
   # GET /quizes/new
   # GET /quizes/new.xml
   def new
-    @quize = Quize.new
+    @quize = @compare.quizes.new
 
     respond_to do |format|
       format.html # new.html.erb
@@ -79,5 +81,9 @@ class QuizesController < ApplicationController
       format.html { redirect_to(quizes_url) }
       format.xml  { head :ok }
     end
+  end
+  private
+  def find_compare
+    @compare = Compare.find(params[:compare_id])
   end
 end

@@ -2,8 +2,14 @@
 
 <table>
   <tr>
+
+    <th>Description</th>
+    
     <th>Question</th>
     <th>Answer</th>
+
+    <th>Maybe</th>
+    <th>Grade</th>
     <th></th>
     <th></th>
     <th></th>
@@ -11,8 +17,14 @@
 
 <% @smarts.each do |smart| %>
   <tr>
+
+    <td><%= smart.description %></td>
+    
     <td><%= smart.question %></td>
     <td><%= smart.answer %></td>
+
+    <td><%= smart.maybe %></td>
+    <td><%= smart.grade %></td>
     <td><%= link_to 'Show', smart %></td>
     <td><%= link_to 'Edit', edit_smart_path(smart) %></td>
     <td><%= link_to 'Destroy', smart, :confirm => 'Are you sure?', :method => :delete %></td>

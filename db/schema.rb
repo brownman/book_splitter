@@ -10,14 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20111109121330) do
-
-  create_table "braves", :force => true do |t|
-    t.string   "question"
-    t.string   "answer"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
+ActiveRecord::Schema.define(:version => 20111111081735) do
 
   create_table "compares", :force => true do |t|
     t.string   "title"
@@ -87,8 +80,8 @@ ActiveRecord::Schema.define(:version => 20111109121330) do
     t.string   "conclusion"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.integer  "priority"
     t.integer  "user_id"
+    t.integer  "priority"
   end
 
   create_table "users", :force => true do |t|

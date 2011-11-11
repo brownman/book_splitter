@@ -17,6 +17,7 @@ class ComparesController < ApplicationController
   def show
     @compare = Compare.find(params[:id])
 @drafts = @compare.drafts
+@quizes = @compare.quizes
     respond_to do |format|
       format.html # show.html.erb
       format.xml  { render :xml => @compare }

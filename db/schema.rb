@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20111111081735) do
+ActiveRecord::Schema.define(:version => 20111112093857) do
 
   create_table "compares", :force => true do |t|
     t.string   "title"
@@ -26,6 +26,14 @@ ActiveRecord::Schema.define(:version => 20111111081735) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "compare_id"
+  end
+
+  create_table "ideas", :force => true do |t|
+    t.string   "title"
+    t.text     "content"
+    t.integer  "user_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "microposts", :force => true do |t|

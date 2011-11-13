@@ -1,0 +1,23 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Title:</b>
+  <%= @idea.title %>
+</p>
+
+<p>
+  <b>Content:</b>
+  <%= @idea.content %>
+</p>
+
+<p>
+  <b>User:</b>
+  <%= @idea.user_id %>
+</p>
+
+
+<%= link_to 'Edit', edit_idea_path(@idea) %> |
+
+<%= link_to 'Back', ideas_path(:user_id => current_user.id) %>
+| 
+<%= link_to 'BackUser', user_path(:id => current_user.id) %>

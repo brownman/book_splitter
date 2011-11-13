@@ -102,9 +102,11 @@ obj = eval(@smart.question)
       format.html { redirect_to(smarts_url) }
       format.xml  { head :ok }
     end
-  private
+
  
   end
+
+  private
  def find_user
     @user = User.find(params[:user_id])
   end

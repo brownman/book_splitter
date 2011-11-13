@@ -10,6 +10,8 @@ class PagesController < ApplicationController
 
       @smarts = current_user.smarts
       @todos = current_user.todos
+
+      @ideas = current_user.ideas
     end
   end
 

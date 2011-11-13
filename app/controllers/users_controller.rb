@@ -16,6 +16,9 @@ class UsersController < ApplicationController
 
     @todos = @user.todos
     @smarts = @user.smarts
+
+    @ideas = @user.ideas
+
     
     @title = @user.name
   end

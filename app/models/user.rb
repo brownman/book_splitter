@@ -17,7 +17,9 @@ class User < ActiveRecord::Base
   attr_accessor   :password
   attr_accessible :name, :email, :password, :password_confirmation
   
+
   has_many :compares,    :dependent => :destroy
+  has_many :ideas,    :dependent => :destroy
 
   has_many :todos,    :dependent => :destroy
   has_many :smarts,    :dependent => :destroy

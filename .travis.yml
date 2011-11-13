@@ -5,7 +5,7 @@ rvm:
 
 notifications:
   email:
-    - ofer.shaham@gmail.com
+    - zzz@gmail.com
 
 branches:
   only:

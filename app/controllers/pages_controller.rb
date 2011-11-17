@@ -12,6 +12,9 @@ class PagesController < ApplicationController
       @todos = current_user.todos
 
       @ideas = current_user.ideas
+  @lines = Line.all
+  @line = Line.new(:user_id => params[:user_id] , :parent_id => params[:parent_id])
+
     end
   end
 

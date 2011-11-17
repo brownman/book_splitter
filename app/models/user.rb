@@ -21,6 +21,8 @@ class User < ActiveRecord::Base
   has_many :compares,    :dependent => :destroy
   has_many :ideas,    :dependent => :destroy
 
+ # has_many :lines,    :dependent => :destroy
+
   has_many :todos,    :dependent => :destroy
   has_many :smarts,    :dependent => :destroy
   

@@ -1,7 +1,7 @@
 class CreateSmarts < ActiveRecord::Migration
   def self.up
     create_table :smarts do |t|
-      t.string :question
+      t.text :question
       t.string :answer
 
       t.timestamps

@@ -1,5 +1,7 @@
 source 'http://rubygems.org'
 gem 'ancestry'
+gem 'coderay'
+gem 'redcarpet'
 
 gem 'jquery-rails'
 gem 'rails', '3.0.9'

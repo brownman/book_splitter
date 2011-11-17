@@ -1,0 +1,15 @@
+<h1>Listing lines</h1>
+
+<%= @lines %>
+
+<%= 
+#  @lines.subtree
+%>
+
+<%= 
+  #nested_lines @lines if @lines
+#.arrange(:order => :created_at)
+%>
+
+<%= render "lines/form" %>
+

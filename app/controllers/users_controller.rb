@@ -19,6 +19,10 @@ class UsersController < ApplicationController
 
     @ideas = @user.ideas
 
+    @lines = Line.all 
+
+  @line = Line.new(:user_id => params[:user_id] , :parent_id => params[:parent_id])
+
     
     @title = @user.name
   end

@@ -1,5 +1,9 @@
+
+
 module ApplicationHelper
-  
+    def textilize(text)
+    CodeFormatter.new(text).to_html.html_safe unless text.blank?
+  end
   # Return a title on a per-page basis.
   def title
     base_title = "Ruby on Rails Tutorial Sample App"

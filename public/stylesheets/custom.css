@@ -392,3 +392,9 @@ padding : 1em
   /* shadow */
   text-shadow: 0 0 0.5em #444;
 }
+.nested_lines {
+  margin-left: 30px;
+}
+.nested_lines .nested_lines .nested_lines {
+  margin-left: 0;
+}

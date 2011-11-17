@@ -1,0 +1,10 @@
+<div class="line">
+  <div class="created_at"><%= line.created_at.strftime("%B %d, %Y") %></div>
+  <div class="content">
+    <%= link_to line.content, line %>
+  </div>
+  <div class="actions">
+    <%= link_to "Reply", new_line_path(:parent_id => line) %> |
+    <%= link_to "Destroy", line, :confirm => "Are you sure?", :method => :delete %>
+  </div>
+</div>

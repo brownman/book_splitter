@@ -1,5 +1,7 @@
 class SmartsController < ApplicationController
 
+  include SmartsHelper
+
   before_filter :find_user , :only => [:index, :new]
   # GET /smarts
   # GET /smarts.xml

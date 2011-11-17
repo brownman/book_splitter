@@ -1,0 +1,5 @@
+<p id="notice"><%= notice %></p>
+
+<%= nested_lines @line.subtree.arrange(:order => :created_at) %>
+
+<p><%= link_to "Back to All lines", lines_path %></p>

@@ -31,3 +31,13 @@ var select2 = $(str2)
 
 //var str_last = <%= @last_save %>
 //select2.update_time(str_last)
+<%= form_for(@line) do |f| %>
+  <%= f.hidden_field :parent_id %>
+
+  <%= f.hidden_field :user_id  %>
+  <p>
+    <%= f.label :content, "New line" %><br />
+    <%= f.text_area :content, :rows => 8 %>
+  </p>
+  <p><%= f.submit "Post line" %></p>
+<% end %>

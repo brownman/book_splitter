@@ -19,8 +19,9 @@
   <tr>
 
     <td><%= smart.description %></td>
-    
-    <td><%= smart.question %></td>
+
+    <td><%= coderay(smart.question) %></td>
+
     <td><%= smart.answer %></td>
 
     <td><%= smart.maybe %></td>
@@ -31,6 +32,5 @@
   </tr>
 <% end %>
 </table>
-
 
 <%= link_to 'New Smart', new_smart_path(:user_id => current_user.id) %>

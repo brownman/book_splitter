@@ -9,6 +9,8 @@ class PagesController < ApplicationController
       @compares = current_user.compares
 
       @smarts = current_user.smarts
+
+  @smart = Smart.new(:user_id => current_user.id)
       @todos = current_user.todos
 
       @ideas = current_user.ideas

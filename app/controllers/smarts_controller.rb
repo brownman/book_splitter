@@ -8,6 +8,7 @@ class SmartsController < ApplicationController
   def index
     @smarts = @user.smarts
     #Smart.all
+    @smart = Smart.new(:user_id => @user.id)
 @smarts.each do |smart|
   
 begin  
@@ -67,13 +68,23 @@ obj = eval(@smart.question)
   def create
     @smart = Smart.new(params[:smart])
 
+    @user = User.find(params[:smart][:user_id])
+    @smarts = @user.smarts
+
     respond_to do |format|
+
       if @smart.save
+
+
+
+    @smart = Smart.new(:user_id =>  @user.id)
         format.html { redirect_to(@smart, :notice => 'Smart was successfully created.') }
         format.xml  { render :xml => @smart, :status => :created, :location => @smart }
+        format.js
       else
         format.html { render :action => "new" }
         format.xml  { render :xml => @smart.errors, :status => :unprocessable_entity }
+        format.js
       end
     end
   end

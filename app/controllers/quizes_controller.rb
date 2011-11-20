@@ -44,13 +44,21 @@ class QuizesController < ApplicationController
   def create
     @quize = Quize.new(params[:quize])
 
+    @compare = Compare.find(params[:quize][:compare_id])
+    @quizes = @compare.quizes
+
     respond_to do |format|
+
       if @quize.save
+
+        @quize = Quize.new(:compare_id => @compare.id)
         format.html { redirect_to(@quize, :notice => 'Quize was successfully created.') }
         format.xml  { render :xml => @quize, :status => :created, :location => @quize }
+        format.js
       else
         format.html { render :action => "new" }
         format.xml  { render :xml => @quize.errors, :status => :unprocessable_entity }
+        format.js
       end
     end
   end

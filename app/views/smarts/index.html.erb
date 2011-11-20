@@ -1,3 +1,5 @@
+<div id="smarts_index">
+
 <h1>Listing smarts</h1>
 
 <table>
@@ -34,3 +36,7 @@
 </table>
 
 <%= link_to 'New Smart', new_smart_path(:user_id => current_user.id) %>
+<%=
+  render  'smarts/form'
+  %>
+<div>

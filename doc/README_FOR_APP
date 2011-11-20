@@ -41,3 +41,7 @@ var select2 = $(str2)
   </p>
   <p><%= f.submit "Post line" %></p>
 <% end %>
+("<%= 
+                         #escape_javascript(render(:template => 'quizes/index'))
+                         "1".class
+                         %>");

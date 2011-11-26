@@ -31,7 +31,14 @@ class LinesController < ApplicationController
   # GET /lines/new.xml
   def new
 #    @line = Line.new()
-  @line = Line.new(:user_id => params[:user_id] , :parent_id => params[:parent_id])
+  @line = Line.new
+  #( :parent_id => params[:parent_id] , :user_id => params[:user_id] )
+
+
+@line.parent_id = params[:parent_id]
+@line.user_id = params[:user_id]
+@line.content = params[:parent_id]
+
 
     #build(params)
       #@user.lines.new
@@ -92,7 +99,7 @@ class LinesController < ApplicationController
   end
  private
   def find_user
-    @user = User.find(params[:user_id])
+ #   @user = User.find(params[:user_id])
   end
 
 end

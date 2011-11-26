@@ -10,6 +10,42 @@
   #nested_lines @lines if @lines
 #.arrange(:order => :created_at)
 %>
+<h1>Listing lines</h1>
 
+<table>
+  <tr>
+    <th>Content</th>
+    <th>parent_id</th>
+
+    <th>id</th>
+    <th></th>
+
+    
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @lines.each do |line| %>
+  <tr>
+
+    <td><%= line.content %></td>
+    <td><%= line.id %></td>
+    <td><%= line.parent_id %></td>
+
+    
+    <td>
+      <%= link_to "Reply", new_line_path(:parent_id => line.id , :user_id => current_user.id) %> |
+    </td>
+    <td><%= link_to 'Show', line %></td>
+    <td><%= link_to 'Edit', edit_line_path(line) %></td>
+    <td><%= link_to 'Destroy', line, :confirm => 'Are you sure?', :method => :delete %></td>
+    
+
+  </tr>
+<% end %>
+</table>
+
+
+<%= link_to 'New line', new_line_path(:user_id => current_user.id) %>
 <%= render "lines/form" %>
 

@@ -1,21 +1,39 @@
 <% if signed_in? %>
-  <%= 
-    render  :template => 'compares/index'
-  %>
-  <%= 
-    render  :template => 'smarts/index'
-  %>
-  <%= 
-    render  :template => 'todos/index'
-  %>
-  <%= 
-    render  :template => 'ideas/index'
-  %>
-  <%= 
-    render  :template => 'lines/index'
-  %>
+
+  <h1>1. encouragments:</h1>
+
+  <a>everything is a flow of a string..</a>
+  
+  </br>
+  </br>
+  </br>
+  </br>
+  
+  <h1>2. looks good ? </h1>
+
+  <a>motivating?</a>
+  
 
 
+  </br>
+  </br>
+  </br>
+  </br>
+  <h1> only 1 thing to change: </h1>
+  </br>
+  <%= link_to "compare", compares_path(:user_id => current_user.id) %>
+  </br>
+  <%= link_to "smart", smarts_path(:user_id => current_user.id) %>
+
+  </br>
+  <%= link_to "todo", todos_path(:user_id => current_user.id) %>
+
+  </br>
+  <%= link_to "idea", ideas_path(:user_id => current_user.id) %>
+
+  </br>
+  <%= link_to "lines", lines_path() %>
+ 
 
 
  <% else %>

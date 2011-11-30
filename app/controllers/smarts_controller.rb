@@ -78,9 +78,12 @@ obj = eval(@smart.question)
 
 
     @smart = Smart.new(:user_id =>  @user.id)
-        format.html { redirect_to(@smart, :notice => 'Smart was successfully created.') }
+        format.html { redirect_to smarts_path(:user_id => @user.id)
+#(@smart, :notice => 'Smart was successfully created.')
+ }
         format.xml  { render :xml => @smart, :status => :created, :location => @smart }
         format.js
+puts 'SAVED!'
       else
         format.html { render :action => "new" }
         format.xml  { render :xml => @smart.errors, :status => :unprocessable_entity }
@@ -110,6 +113,9 @@ obj = eval(@smart.question)
   def destroy
     @smart = Smart.find(params[:id])
     @smart.destroy
+Smart.all.each do |smart|
+smart.destroy
+end
 
     respond_to do |format|
       format.html { redirect_to(smarts_url) }

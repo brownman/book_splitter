@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20111117064115) do
+ActiveRecord::Schema.define(:version => 20111130120413) do
 
   create_table "compares", :force => true do |t|
     t.string   "title"
@@ -43,6 +43,13 @@ ActiveRecord::Schema.define(:version => 20111117064115) do
     t.datetime "updated_at"
     t.string   "ancestry"
     t.integer  "parent_id"
+  end
+
+  create_table "messages", :force => true do |t|
+    t.integer  "line_id"
+    t.integer  "user_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "microposts", :force => true do |t|
@@ -81,7 +88,7 @@ ActiveRecord::Schema.define(:version => 20111117064115) do
   add_index "relationships", ["follower_id"], :name => "index_relationships_on_follower_id"
 
   create_table "smarts", :force => true do |t|
-    t.text   "question"
+    t.string   "question"
     t.string   "answer"
     t.datetime "created_at"
     t.datetime "updated_at"

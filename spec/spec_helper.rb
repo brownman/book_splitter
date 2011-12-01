@@ -29,12 +29,18 @@ Spork.prefork do
     # instead of true.
     config.use_transactional_fixtures = true
 
+
     def test_sign_in(user)
+puts controller
       controller.sign_in(user)
+
+puts controller
     end
     config.treat_symbols_as_metadata_keys_with_true_values = true
     config.filter_run :focus => true
     config.run_all_when_everything_filtered = true
+
+  config.fail_fast = true
   end
 end
 

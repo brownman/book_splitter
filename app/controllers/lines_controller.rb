@@ -61,6 +61,8 @@ class LinesController < ApplicationController
 
     respond_to do |format|
       if @line.save
+@user_parent = User.find(user_id => Line.find(:line_id => @line.parent_id).user_id)
+@user_parent.messages.create!(:line_id => @line.id)
         format.html { redirect_to(@line, :notice => 'Line was successfully created.') }
         format.xml  { render :xml => @line, :status => :created, :location => @line }
       else

@@ -1,4 +1,5 @@
 class ComparesController < ApplicationController
+
   before_filter :find_user , :only => [:index, :new]
 
 #  before_filter :find_chapter , :only => [:index]

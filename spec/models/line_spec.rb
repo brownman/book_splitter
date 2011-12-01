@@ -17,10 +17,10 @@ describe Line do
   describe "user associations" do
 
     before(:each) do
-      #@line = @user.lines.create(@attr)
+      @line = @user.lines.create(@attr)
 
-      @attr =  {:user_id => @user.id,  :content => "lorem ipsum" }
-      @line = Line.create(@attr)
+      #@attr =  {:user_id => @user.id,  :content => "lorem ipsum" }
+      #@line = Line.create(@attr)
     end
 
     it "should have a user attribute" do
@@ -52,14 +52,14 @@ describe Line do
     end
   end
 
-  describe "user line has siblings" do
-    it '' do 
+  describe "user line has children" do
+    it 'add child' do 
       
 @line1 =       Line.create!(@attr_valid)
 @line2 = Line.create!(:parent_id => @line1.id , :user_id => 2 , :content => "there was a ")
-@line1.children.should == ("")
-
+@line1.children.size.should == 1
     end
+
 
   end
 

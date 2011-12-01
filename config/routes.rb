@@ -1,5 +1,7 @@
 SampleApp::Application.routes.draw do
 
+  resources :messages
+
   resources :lines
 
   resources :ideas

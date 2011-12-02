@@ -17,3 +17,8 @@ Factory.define :micropost do |micropost|
   micropost.content "Foo bar"
   micropost.association :user
 end
+
+Factory.define :idea do |idea|
+  idea.content "Foo bar"
+  idea.association :user
+end

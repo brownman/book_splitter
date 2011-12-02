@@ -1,10 +1,15 @@
 class IdeasController < ApplicationController
 
-  before_filter :find_user , :only => [:index, :new]
+  before_filter :authenticate
+
+  before_filter :authorized_user, :only => :destroy
+
+  #  before_filter :find_user , :only => [:index, :new]
   # GET /ideas
   # GET /ideas.xml
   def index
-    @ideas = @user.ideas
+    @ideas = current_user.ideas
+    #@user.ideas
 
     respond_to do |format|
       format.html # index.html.erb
@@ -26,7 +31,8 @@ class IdeasController < ApplicationController
   # GET /ideas/new
   # GET /ideas/new.xml
   def new
-    @idea = @user.ideas.new
+    @idea = current_user.ideas.new
+    #@user.ideas.new
 
     respond_to do |format|
       format.html # new.html.erb
@@ -42,11 +48,18 @@ class IdeasController < ApplicationController
   # POST /ideas
   # POST /ideas.xml
   def create
-    @idea = Idea.new(params[:idea])
+
+    @idea = current_user.ideas.build(params[:idea])
+    #@idea = Idea.new(params[:idea])
 
     respond_to do |format|
       if @idea.save
-        format.html { redirect_to(@idea, :notice => 'Idea was successfully created.') }
+        format.html { 
+          #redirect_to(@idea, :notice => 'Idea was successfully created.')
+
+          redirect_to ideas_path, :flash => { :success => "Idea created!" }
+          #(:user_id => current_user.id)
+        }
         format.xml  { render :xml => @idea, :status => :created, :location => @idea }
       else
         format.html { render :action => "new" }
@@ -73,17 +86,27 @@ class IdeasController < ApplicationController
 
   # DELETE /ideas/1
   # DELETE /ideas/1.xml
-  def destroy
-    @idea = Idea.find(params[:id])
-    @idea.destroy
+  #def destroy
+    #@idea = Idea.find(params[:id])
+    #@idea.destroy
 
-    respond_to do |format|
-      format.html { redirect_to(ideas_url) }
-      format.xml  { head :ok }
-    end
+    #respond_to do |format|
+      #format.html { redirect_to(ideas_url) }
+      #format.xml  { head :ok }
+    #end
+  #end
+  def destroy
+    @idea.destroy
+    redirect_to root_path, :flash => { :success => "Idea deleted!" }
   end
   private
- def find_user
+  def find_user
     @user = User.find(params[:user_id])
+  end
+
+
+  def authorized_user
+    @idea = current_user.ideas.find_by_id(params[:id])
+    redirect_to root_path if @idea.nil?
   end
 end

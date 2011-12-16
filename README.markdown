@@ -1,3 +1,6 @@
+done:
+- create develop branch
+
 1 umanity
 ---------
 this application targets making a circulation between my ideas ,  my tasks , and translating it to a web-application which will be handy to others.

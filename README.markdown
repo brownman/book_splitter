@@ -1,5 +1,7 @@
 done:
 - create develop branch
+  - another_person_change_readme and uses branch:develop
+
 
 1 umanity
 ---------

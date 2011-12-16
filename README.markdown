@@ -1,7 +1,9 @@
 done:
 - create develop branch
-  - another_person_change_readme and uses branch:develop
 
+- fix merge conflict:
+ feature2: - another_person_change_readme and uses branch:develop
+ feature1: - add feature branch to fix_all_broken_specs
 
 1 umanity
 ---------

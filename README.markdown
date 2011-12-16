@@ -1,9 +1,8 @@
 done:
-- create develop branch
+- make use of git flow 
 
-- fix merge conflict:
- feature2: - another_person_change_readme and uses branch:develop
- feature1: - add feature branch to fix_all_broken_specs
+
+
 
 1 umanity
 ---------

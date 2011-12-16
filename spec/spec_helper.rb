@@ -1,4 +1,7 @@
+require 'rubygems'
+
 require 'spork'
+
 
 Spork.prefork do
   # Loading more in this block will cause your tests to run faster. However, 
@@ -31,10 +34,10 @@ Spork.prefork do
 
 
     def test_sign_in(user)
-puts controller
+#puts controller
       controller.sign_in(user)
 
-puts controller
+#puts controller
     end
     config.treat_symbols_as_metadata_keys_with_true_values = true
     config.filter_run :focus => true
@@ -45,5 +48,5 @@ puts controller
 end
 
 Spork.each_run do
-  #FactoryGirl.reload
+ # FactoryGirl.reload
 end

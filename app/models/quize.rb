@@ -1,4 +1,9 @@
 class Quize < ActiveRecord::Base
+  belongs_to :compare
+
+  validates :compare_id, :presence => true
+
+  validates :question, :presence => true, :length => {:minimum => 1}
 end
 
 # == Schema Information

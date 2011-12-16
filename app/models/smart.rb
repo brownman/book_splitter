@@ -1,6 +1,9 @@
 class Smart < ActiveRecord::Base
   belongs_to :user
 
+
+  validates :question, :presence => true, :length => { :minimum => 1 }
+  #, :length => { :maximum => 1000 }
   validates :user_id, :presence => true
 end
 

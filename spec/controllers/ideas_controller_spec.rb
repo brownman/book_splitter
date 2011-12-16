@@ -19,6 +19,7 @@ describe IdeasController do
     
     before(:each) do
       @user = test_sign_in(Factory(:user))
+@user.should_not ==  nil
     end
 
     describe "failure" do
@@ -53,7 +54,8 @@ describe IdeasController do
       
       it "should redirect to the root path" do
         post :create, :idea => @attr
-        response.should redirect_to(ideas_path(:user_id => @user))
+        response.should redirect_to ideas_path
+                                    #(:user_id => @user))
       end
 
       it "should have a flash success message" do
@@ -84,14 +86,17 @@ describe IdeasController do
       
       before(:each) do
         @user = test_sign_in(Factory(:user))
-        @idea = Factory(:idea, :user => @user)
+        
+        @user.should_not == nil
+        @idea = Factory(:idea, :user_id => @user)
+        #@idea.should == nil
       end
       
       it "should destroy the idea" do
         lambda do
           delete :destroy, :id => @idea
           flash[:success].should =~ /deleted/i
-          response.should redirect_to(root_path)
+          response.should redirect_to(ideas_path)
         end.should change(Idea, :count).by(-1)
       end
     end

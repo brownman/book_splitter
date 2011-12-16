@@ -97,7 +97,7 @@ class IdeasController < ApplicationController
   #end
   def destroy
     @idea.destroy
-    redirect_to root_path, :flash => { :success => "Idea deleted!" }
+    redirect_to ideas_path, :flash => { :success => "Idea deleted!" }
   end
   private
   def find_user

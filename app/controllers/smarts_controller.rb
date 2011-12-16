@@ -2,30 +2,36 @@ class SmartsController < ApplicationController
 
   include SmartsHelper
 
-  before_filter :find_user , :only => [:index, :new]
+  #before_filter :find_user , :only => [:index, :new]
+
+  before_filter :authenticate
+
+  before_filter :authorized_user, :only => :destroy
+
+
   # GET /smarts
   # GET /smarts.xml
   def index
     @smarts = @user.smarts
     #Smart.all
     @smart = Smart.new(:user_id => @user.id)
-@smarts.each do |smart|
-  
-begin  
-  obj =     eval(smart.question)
+    @smarts.each do |smart|
 
-smart.answer = (obj).to_s
-rescue Exception => e  
-  puts e.message  
-  puts e.backtrace.inspect  
+      begin  
+        obj =     eval(smart.question)
 
-smart.answer = e.message
-end  
+        smart.answer = (obj).to_s
+      rescue Exception => e  
+        puts e.message  
+        puts e.backtrace.inspect  
 
-
+        smart.answer = e.message
+      end  
 
 
-end
+
+
+    end
     respond_to do |format|
       format.html # index.html.erb
       format.xml  { render :xml => @smarts }
@@ -36,9 +42,9 @@ end
   # GET /smarts/1.xml
   def show
     @smart = Smart.find(params[:id])
-obj = eval(@smart.question)
+    obj = eval(@smart.question)
 
-@smart.answer = (obj).to_s
+    @smart.answer = (obj).to_s
     respond_to do |format|
       format.html # show.html.erb
       format.xml  { render :xml => @smart }
@@ -48,7 +54,7 @@ obj = eval(@smart.question)
   # GET /smarts/new
   # GET /smarts/new.xml
   def new
-    @smart = @user.smarts.new
+    @smart = current_user.smarts.new
     #Smart.new
 
 
@@ -66,10 +72,11 @@ obj = eval(@smart.question)
   # POST /smarts
   # POST /smarts.xml
   def create
-    @smart = Smart.new(params[:smart])
+    @smart = current_user.smarts.build(params[:smart])
+    #@smart = Smart.new(params[:smart])
 
-    @user = User.find(params[:smart][:user_id])
-    @smarts = @user.smarts
+    #@user = User.find(params[:smart][:user_id])
+    #@smarts = @user.smarts
 
     respond_to do |format|
 
@@ -77,13 +84,17 @@ obj = eval(@smart.question)
 
 
 
-    @smart = Smart.new(:user_id =>  @user.id)
-        format.html { redirect_to smarts_path(:user_id => @user.id)
-#(@smart, :notice => 'Smart was successfully created.')
- }
+        @smart = Smart.new(:user_id =>  current_user.id)
+   format.html {
+
+          redirect_to smarts_path, :flash => { :success => "smart created!" } }
+       #format.html { redirect_to( smarts_path  ,    :notice => "smart created" )  }
+        #(:user_id => @user.id
+
+        #(@smart, :notice => 'Smart was successfully created.')
         format.xml  { render :xml => @smart, :status => :created, :location => @smart }
         format.js
-puts 'SAVED!'
+        puts 'SAVED!'
       else
         format.html { render :action => "new" }
         format.xml  { render :xml => @smart.errors, :status => :unprocessable_entity }
@@ -111,22 +122,32 @@ puts 'SAVED!'
   # DELETE /smarts/1
   # DELETE /smarts/1.xml
   def destroy
-    @smart = Smart.find(params[:id])
     @smart.destroy
-Smart.all.each do |smart|
-smart.destroy
-end
+    redirect_to smarts_path, :flash => { :success => "Smart deleted!" }
 
-    respond_to do |format|
-      format.html { redirect_to(smarts_url) }
-      format.xml  { head :ok }
-    end
 
- 
+    #@smart = Smart.find(params[:id])
+    #@smart.destroy
+    #Smart.all.each do |smart|
+    #smart.destroy
+    #end
+
+    #respond_to do |format|
+    #format.html { redirect_to(smarts_url) }
+    #format.xml  { head :ok }
+    #end
+
+
   end
 
+
   private
- def find_user
-    @user = User.find(params[:user_id])
+  def find_user
+    #   @user = User.find(params[:user_id])
+  end
+
+  def authorized_user
+    @smart = current_user.smarts.find_by_id(params[:id])
+    redirect_to root_path if @smart.nil?
   end
 end

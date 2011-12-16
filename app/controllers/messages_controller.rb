@@ -1,6 +1,11 @@
 class MessagesController < ApplicationController
   # GET /messages
   # GET /messages.xml
+  before_filter :authenticate
+
+  before_filter :authorized_user, :only => :destroy
+
+
   def index
     @messages = Message.all
 
@@ -24,7 +29,9 @@ class MessagesController < ApplicationController
   # GET /messages/new
   # GET /messages/new.xml
   def new
-    @message = Message.new
+    #@message = Message.new
+
+    @message = current_user.messages.new
 
     respond_to do |format|
       format.html # new.html.erb
@@ -40,11 +47,18 @@ class MessagesController < ApplicationController
   # POST /messages
   # POST /messages.xml
   def create
-    @message = Message.new(params[:message])
+    @message = current_user.messages.build(params[:message])
+    #@idea = Idea.new(params[:idea])
 
     respond_to do |format|
       if @message.save
-        format.html { redirect_to(@message, :notice => 'Message was successfully created.') }
+        format.html { 
+          #redirect_to(@idea, :notice => 'Idea was successfully created.')
+
+          redirect_to messages_path, :flash => { :success => "Message created!" }
+          #(:user_id => current_user.id)
+        }
+
         format.xml  { render :xml => @message, :status => :created, :location => @message }
       else
         format.html { render :action => "new" }
@@ -71,13 +85,23 @@ class MessagesController < ApplicationController
 
   # DELETE /messages/1
   # DELETE /messages/1.xml
-  def destroy
-    @message = Message.find(params[:id])
-    @message.destroy
+  #def destroy
+    #@message = Message.find(params[:id])
+    #@message.destroy
 
-    respond_to do |format|
-      format.html { redirect_to(messages_url) }
-      format.xml  { head :ok }
-    end
+    #respond_to do |format|
+      #format.html { redirect_to(messages_url) }
+      #format.xml  { head :ok }
+    #end
+  #end
+  def destroy
+    @message.destroy
+    redirect_to messages_path, :flash => { :success => "Message deleted!" }
+  end
+private
+
+  def authorized_user
+    @message = current_user.messages.find_by_id(params[:id])
+    redirect_to root_path if @message.nil?
   end
 end

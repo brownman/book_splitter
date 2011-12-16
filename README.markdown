@@ -1,6 +1,6 @@
 done:
 - create develop branch
-
+- add feature branch to fix_all_broken_specs
 1 umanity
 ---------
 this application targets making a circulation between my ideas ,  my tasks , and translating it to a web-application which will be handy to others.

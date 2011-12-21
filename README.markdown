@@ -1,3 +1,13 @@
+
+vesion:
+- fix: js:  add new-line ascii to list of end-line symbols
+
+done:
+- make use of git flow 
+
+
+
+
 1 umanity
 ---------
 this application targets making a circulation between my ideas ,  my tasks , and translating it to a web-application which will be handy to others.

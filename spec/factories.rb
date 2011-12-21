@@ -18,7 +18,7 @@ Factory.define :micropost do |micropost|
   micropost.association :user
 end
 Factory.define :compare do |compare|
-  compare "Foo bar"
+  compare.title "Foo bar"
   compare.association :user
 end
 

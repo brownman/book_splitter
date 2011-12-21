@@ -1,3 +1,7 @@
+
+vesion:
+- fix: js:  add new-line ascii to list of end-line symbols
+
 done:
 - make use of git flow 
 

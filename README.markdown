@@ -1,6 +1,11 @@
 
+[![Build Status](https://secure.travis-ci.org/brownman/book_model_home.png)](http://travis-ci.org/brownman/book_model_home)
+
 vesion:
 - fix: js:  add new-line ascii to list of end-line symbols
+- use travis-ci
+
+
 
 done:
 - make use of git flow 

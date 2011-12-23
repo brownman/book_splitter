@@ -5,7 +5,7 @@ class Compare < ActiveRecord::Base
   has_many :quizes
   
   validates :user_id, :presence => true
-  
+    validates :title, :presence => true, :length => {:minimum => 1}
 end
 
 # == Schema Information

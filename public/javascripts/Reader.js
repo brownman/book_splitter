@@ -166,7 +166,7 @@ var Splitter = {
 
             )
 
-            $(this).update_input_field();
+            $(this).set_input_field();
 
     }
 
@@ -200,13 +200,22 @@ var Splitter = {
         $(this).find(".update_state").text(str)
     }
 
-    $.fn.update_input_field = function()
+    $.fn.set_input_field = function()
     {
         var select =  $(this).get_parent_class(".me")
-            content = $(select).stringify_all_li()
-            select.get_child_input().val(content);
+            content = $(select).stringify_all_li() //sum up the text from all li rows
+            select.get_child_input().val(content); //update the presented text
     }
-
+    $.fn.get_input_field = function()
+    {
+        var select =  $(this).get_parent_class(".me")
+//  content = $(select).stringify_all_li()
+     
+        var select2  =   select.get_child_input()
+        var str =     select2.val();
+        return str;
+       
+    }
     $.fn.update_save_state = function(str)
     {
         selector1 = $(this).get_parent_class(".me")
@@ -246,7 +255,7 @@ var Splitter = {
 
                 $(this).update_save_state("should save")
                 $(this).find(nth).remove()
-                $(this).update_input_field()
+                $(this).set_input_field()
 
             })
 
@@ -274,7 +283,7 @@ var Splitter = {
         //        console.log(str)
         //              str = $(this).closest(".me").attr('data-id')
         //find element in current scope
-        $(this).update_input_field()
+        $(this).set_input_field()
 //this.update_others()
 
 

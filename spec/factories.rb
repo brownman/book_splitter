@@ -41,9 +41,15 @@ Factory.define :smart do |smart|
   #  message.user_id 2
   smart.association :user
 end
-Factory.define :quiz do |smart|
-  smart.question "1+3"
+Factory.define :quize do |quize|
+  quize.question "1+3"
   #  message.user_id 2
-  smart.association :compare
+  quize.association :compare
 end
+Factory.define :draft do |draft|
+  draft.title "eng"
+  #  message.user_id 2
+  draft.association :compare
+end
+
 

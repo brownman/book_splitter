@@ -1,6 +1,9 @@
 class DraftsController < ApplicationController
 
   before_filter :find_compare , :only => [:index, :new]
+  before_filter :authenticate
+
+  before_filter :authorized_user, :only => [:destroy, :edit]
   # GET /drafts
   # GET /drafts.xml
   def index
@@ -47,7 +50,7 @@ class DraftsController < ApplicationController
 
     respond_to do |format|
       if @draft.save
-        format.html { redirect_to(@draft, :notice => 'Draft was successfully created.') }
+        format.html { redirect_to(drafts_path, :flash => { :success => 'draft created.'}) }
         format.xml  { render :xml => @draft, :status => :created, :location => @draft }
       else
         format.html { render :action => "new" }
@@ -74,7 +77,7 @@ class DraftsController < ApplicationController
 
   # DELETE /drafts/1
   # DELETE /drafts/1.xml
-  def destroy
+  def destroy1
     @draft = Draft.find(params[:id])
     @draft.destroy
 
@@ -89,7 +92,12 @@ class DraftsController < ApplicationController
       format.xml  { head :ok }
     end
   end
-  
+    def destroy
+
+ @draft.destroy
+    redirect_to drafts_path, :flash => { :success => "Draft deleted!" }
+
+  end
   def push
 @draft = Draft.find(params[:id])
 #indexes = []
@@ -122,5 +130,13 @@ puts @last_save
   private
   def find_compare
     @compare = Compare.find(params[:compare_id])
+  end
+  def authorized_user
+
+   current_user.compares.each do |compare| 
+      found = compare.drafts.find_by_id(params[:id])
+      @draft = found if found  
+    end
+    redirect_to root_path if @draft.nil?
   end
 end

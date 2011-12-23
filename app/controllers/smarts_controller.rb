@@ -12,7 +12,7 @@ class SmartsController < ApplicationController
   # GET /smarts
   # GET /smarts.xml
   def index
-    @smarts = @user.smarts
+    @smarts = current_user.smarts
     #Smart.all
     @smart = Smart.new(:user_id => @user.id)
     @smarts.each do |smart|

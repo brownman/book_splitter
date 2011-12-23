@@ -1,6 +1,11 @@
 class QuizesController < ApplicationController
 
   before_filter :find_compare , :only => [:index, :new]
+  before_filter :authenticate
+
+  before_filter :authorized_user, :only => [:destroy, :edit]
+
+
   # GET /quizes
   # GET /quizes.xml
   def index
@@ -15,7 +20,7 @@ class QuizesController < ApplicationController
   # GET /quizes/1
   # GET /quizes/1.xml
   def show
-    @quize = Quize.find(params[:id])
+    @quize = @compare.quizes.find(params[:id])
 
     respond_to do |format|
       format.html # show.html.erb
@@ -36,7 +41,7 @@ class QuizesController < ApplicationController
 
   # GET /quizes/1/edit
   def edit
-    @quize = Quize.find(params[:id])
+    @quize = @compare.find(params[:id])
   end
 
   # POST /quizes
@@ -52,7 +57,8 @@ class QuizesController < ApplicationController
       if @quize.save
 
         @quize = Quize.new(:compare_id => @compare.id)
-        format.html { redirect_to(@quize, :notice => 'Quize was successfully created.') }
+        format.html { redirect_to quizes_path, :flash => { :success => "quize created!" } }
+
         format.xml  { render :xml => @quize, :status => :created, :location => @quize }
         format.js
       else
@@ -81,7 +87,7 @@ class QuizesController < ApplicationController
 
   # DELETE /quizes/1
   # DELETE /quizes/1.xml
-  def destroy
+  def destroy1
     @quize = Quize.find(params[:id])
     @quize.destroy
 
@@ -90,8 +96,28 @@ class QuizesController < ApplicationController
       format.xml  { head :ok }
     end
   end
+  def destroy
+    #@line = Line.find(params[:id])
+    #@line.destroy
+
+    #respond_to do |format|
+      #format.html { redirect_to(lines_url) }
+      #format.xml  { head :ok }
+    #end
+ @quize.destroy
+    redirect_to quizes_path, :flash => { :success => "Quize deleted!" }
+
+  end
   private
   def find_compare
     @compare = Compare.find(params[:compare_id])
+  end
+  def authorized_user
+
+   current_user.compares.each do |compare| 
+      found = compare.quizes.find_by_id(params[:id])
+      @quize = found if found  
+    end
+    redirect_to root_path if @quize.nil?
   end
 end

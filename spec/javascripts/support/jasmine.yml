@@ -11,6 +11,7 @@
 #   - dist/**/*.js
 #
 src_files:
+
   - public/javascripts/jquery.js
 
   - public/javascripts/jasmine_examples/Player.js
@@ -18,13 +19,6 @@ src_files:
 
   - public/javascripts/credit_card.js
   - public/javascripts/Reader.js
-
-  #- public/javascripts/effects.js
-  #- public/javascripts/controls.js
-  #- public/javascripts/dragdrop.js
-  - public/javascripts/application.js
-
-
 # stylesheets
 #
 # Return an array of stylesheet filepaths relative to src_dir to include before jasmine specs.

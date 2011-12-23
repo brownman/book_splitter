@@ -5,22 +5,24 @@ describe("Reader", function() {
 
 
     //logic: js string to array
-    it("js logic: split from string to array by symbols", function() {
+    it("js logic: string to array: split the text (Split defines punctuation symbols)", function() {
         str =  "first line.second line, third line"
         expect(Splitter.split(str).length).toEqual(3);
     });
 
     //jquery - generate li in the menu
-    it("jquery: update menu.li by array", function() {
+    it("jquery: array to dom.menu.list: populate the dom.menu with list items", function() {
         loadFixtures("many_lists.html");
 
-        var num = $("#menu_split1 li").size() 
-        expect(num).toEqual(0);
+
+        var selector = $("#menu_split1")
+        //var num = $("#menu_split1 li").size() 
+        var num = selector.find("li").size()
+        expect(num).toEqual(0);// no li elements
 
 
-    //populate the dom.menu with array
-    var selector = $("#menu_split1")
-        var arr = 
+    //example: array with 4 lines
+    var arr = 
         [
         'first line', 
         'second line',
@@ -40,33 +42,33 @@ describe("Reader", function() {
 
 
     //functionality:
-    it("click on li should add a new li", function() {
+    it("dom event: when a row is clicked: push in-place an empty row ", function() {
         loadFixtures("many_lists.html");
 
         selector = $("#menu_split7")
 
         //add 1 li to beggining of menu
-    //
-    //
-    var li = selector.find('li')
-    num = li.size();
+        //
+        //
+        var li = selector.find('li')
+        num = li.size();
     expect(num).toEqual(8);
 
 
 
     expect(li.first().text()).toNotEqual("=")
-    li.first().click();
+        li.first().click();
 
     li1 = selector.find('li') //update array
-    num = li1.size();
+        num = li1.size();
     expect(num).toEqual(9);
-    
+
     li2 = li1.first()
-    expect(li2.text()).toEqual("=")
- 
-    
-    //click on added(not original) item: jquery live() enable functionality
-    li = selector.find('li').first().click();
+        expect(li2.text()).toEqual("=")
+
+
+        //click on added(not original) item: jquery live() enable functionality
+        li = selector.find('li').first().click();
     num = selector.find('li').size();
     expect(num).toEqual(10);
 
@@ -75,7 +77,7 @@ describe("Reader", function() {
 
     });
 
-    it("remove row in all menus when each line is signed with =", function() {
+    it("when li is clicked: remove row in all menus if all rows contain the sign: =", function() {
         loadFixtures("many_lists.html");
 
         var       selector1 = $("#menu_split7")
@@ -91,8 +93,9 @@ describe("Reader", function() {
 
         //it should trigger the line check for the equality  symbol
         selector1.find('li').first().click()
+
         selector0.find('li').first().click()
-        
+
         num = selector1.find('li').size()
         expect(num).toEqual(9)
 
@@ -105,45 +108,34 @@ describe("Reader", function() {
         'second line',
         'third line',
         'fourth line'
-         ]
-        selector2.updateDom(arr); //populate_dom 
+            ]
+            selector2.updateDom(arr); //populate_dom 
 
 
-        //it should trigger the line check for the equality  symbol
-        selector2.find('li').first().click()
+    //it should trigger the line check for the equality  symbol
+    selector2.find('li').first().click()
         num = selector1.find('li').size()
         expect(num).toEqual(8) //first li(=) is eliminated!
     });
 
-    it("click on item of list should add row before", function() {
-        loadFixtures("many_lists.html");
-        str = $( $("#menu_split7 li").first() )
 
-        expect(str).toHaveText("11.");
-
-    });
-    it("input-field should contain all the li text", function() {
+    it(" input-field should contain all the li text: get:: dom.menu.li items and set:: dom.input field", function() {
         loadFixtures("many_lists.html");
 
         var selector = $("#menu_split7")
 
-        selector.update_input_field()
+        selector.set_input_field()
 
-console.log(selector)
-        selector1 = selector.get_parent_class(".me")
 
-console.log(selector1)
-        selector2 = selector1.get_child_input()
+        str = selector.get_input_field()
 
-console.log(selector2)
-        str = selector2.val()
 
         expect(str).toEqual("11.d,f.ds,f.s,df,ds");
     });
 
 
 
-    it("what is the menu update state ", function() {
+    it("user is notice: wether a save is recommanded: refresh the menu's update-state after a menu.li.click()", function() {
         loadFixtures("many_lists.html");
         var selector = $("#menu_split7")
 

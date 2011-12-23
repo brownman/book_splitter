@@ -38,6 +38,7 @@ SampleApp::Application.routes.draw do
   
   
 
+  match '/home', :to => 'pages#home'
   match '/contact', :to => 'pages#contact'
   match '/about',   :to => 'pages#about'
   match '/help',    :to => 'pages#help'
@@ -104,7 +105,7 @@ SampleApp::Application.routes.draw do
   # Note: This route will make all actions in every controller accessible via GET requests.
   # match ':controller(/:action(/:id(.:format)))'
   #
-    resources :posts
+#    resources :posts
  # root :to => "posts#index"
 
   root :to => "pages#home"

@@ -55,7 +55,7 @@ describe DraftsController do
 
       it "should redirect to the root path" do
         post :create, :draft => @attr
-        response.should redirect_to drafts_path
+        response.should redirect_to compare_path(:id => @attr[:compare_id])
         #(:user_id => @user))
       end
 

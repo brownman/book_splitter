@@ -1,0 +1,123 @@
+
++BRAKEMAN REPORT+
+
+Application path: /home/dao01/RAILS/rack_book_split/HOME/book_model_home
+Rails version: 3.0.9
+Generated at 2011-12-25 12:20:04 +0200
+Checks run: BasicAuth, CrossSiteScripting, DefaultRoutes, EscapeFunction, Evaluation, Execute, FileAccess, FilterSkipping, ForgerySetting, MailTo, MassAssignment, ModelAttributes, NestedAttributes, QuoteTableName, Redirect, Render, ResponseSplitting, SQL, SendFile, SessionSettings, StripTags, TranslateBug, ValidationRegex, WithoutProtection
+
++SUMMARY+
++-----------------------------+
+| Scanned/Reported  |  Total  |
++-----------------------------+
+| Controllers       |      15 |
+| Models            |      12 |
+| Templates         |      78 |
+| Errors            |      28 |
+| Security Warnings | 38 (18) |
++-----------------------------+
+
++-------------------------------+
+|     Warning Type      | Total |
++-------------------------------+
+| Attribute Restriction |     1 |
+| Cross Site Scripting  |     5 |
+| Dangerous Eval        |     1 |
+| Dynamic Render Path   |     3 |
+| Mass Assignment       |    15 |
+| Redirect              |    12 |
+| SQL Injection         |     1 |
++-------------------------------+
+
++ERRORS+
++---------------------------------------------------------------------------------------------------------------------------->>
+|                                                                  Error                                                     >>
++---------------------------------------------------------------------------------------------------------------------------->>
+|  parse error on value nil (tNL)                                                                                            >>
+|  parse error on value "," (tCOMMA)                                                                                         >>
+| invalid byte sequence in UTF-8 While processing /home/dao01/RAILS/rack_book_split/HOME/book_model_home/lib/meta/2/rubyists >>
+|  parse error on value "^" (tCARET)                                                                                         >>
+| invalid byte sequence in UTF-8 While processing /home/dao01/RAILS/rack_book_split/HOME/book_model_home/lib/meta/2/rubyists >>
+|  parse error on value ["else", 14] (kELSE)                                                                                 >>
+| wrong number of arguments (0 for 1)                                                                                        >>
+| wrong number of arguments (0 for 1)                                                                                        >>
+| wrong number of arguments (0 for 1)                                                                                        >>
+| wrong number of arguments (0 for 1)                                                                                        >>
+| wrong number of arguments (0 for 1)                                                                                        >>
+| wrong number of arguments (0 for 1)                                                                                        >>
+| wrong number of arguments (0 for 1)                                                                                        >>
+| wrong number of arguments (0 for 1)                                                                                        >>
+| wrong number of arguments (0 for 1)                                                                                        >>
+| wrong number of arguments (0 for 1)                                                                                        >>
+| wrong number of arguments (0 for 1)                                                                                        >>
+| wrong number of arguments (0 for 1)                                                                                        >>
+| wrong number of arguments (0 for 1)                                                                                        >>
+| wrong number of arguments (0 for 1)                                                                                        >>
+| wrong number of arguments (0 for 1)                                                                                        >>
+| wrong number of arguments (0 for 1)                                                                                        >>
+| wrong number of arguments (0 for 1)                                                                                        >>
+| wrong number of arguments (0 for 1)                                                                                        >>
+| wrong number of arguments (0 for 1)                                                                                        >>
+| wrong number of arguments (0 for 1)                                                                                        >>
+| wrong number of arguments (0 for 1)                                                                                        >>
+| wrong number of arguments (0 for 1)                                                                                        >>
++---------------------------------------------------------------------------------------------------------------------------->>
+
++SECURITY WARNINGS+
++---------------------------------------------------------------------------------------------------------------------------->>
+| Confidence |          Class          | Method  |     Warning Type     |                                                    >>
++---------------------------------------------------------------------------------------------------------------------------->>
+| High       | SmartsController        | show    | Dangerous Eval       | User input in eval near line 45: eval(Smart.find(pa>>
+| High       | ComparesController      | update  | Mass Assignment      | Unprotected mass assignment near line 76: Compare.f>>
+| High       | DraftsController        | create  | Mass Assignment      | Unprotected mass assignment near line 49: Draft.new>>
+| High       | DraftsController        | update  | Mass Assignment      | Unprotected mass assignment near line 68: Draft.fin>>
+| High       | LinesController         | update  | Mass Assignment      | Unprotected mass assignment near line 102: Line.fin>>
+| High       | MessagesController      | update  | Mass Assignment      | Unprotected mass assignment near line 76: Message.f>>
+| High       | PostsController         | create  | Mass Assignment      | Unprotected mass assignment near line 43: Post.new(>>
+| High       | PostsController         | update  | Mass Assignment      | Unprotected mass assignment near line 62: Post.find>>
+| High       | QuizesController        | create  | Mass Assignment      | Unprotected mass assignment near line 50: Quize.new>>
+| High       | QuizesController        | update  | Mass Assignment      | Unprotected mass assignment near line 78: Quize.fin>>
+| High       | SmartsController        | update  | Mass Assignment      | Unprotected mass assignment near line 112: Smart.fi>>
+| High       | TodosController         | create  | Mass Assignment      | Unprotected mass assignment near line 47: Todo.new(>>
+| High       | TodosController         | update  | Mass Assignment      | Unprotected mass assignment near line 66: Todo.find>>
+| Medium     |                         |         | Cross Site Scripting | Versions before 3.0.11 have a vulnerability in tran>>
+| Medium     |                         |         | SQL Injection        | Versions before 3.0.10 have a vulnerability in quot>>
+| Weak       | LinesController         | new     | Mass Assignment      | Unprotected mass assignment near line 42: Line.new(>>
+| Weak       | QuizesController        | create  | Mass Assignment      | Unprotected mass assignment near line 59: Quize.new>>
+| Weak       | UsersController         | show    | Mass Assignment      | Unprotected mass assignment near line 24: Line.new(>>
+| Weak       | ComparesController      | update  | Redirect             | Possible unprotected redirect near line 77: redirec>>
+| Weak       | DraftsController        | update  | Redirect             | Possible unprotected redirect near line 69: redirec>>
+| Weak       | IdeasController         | update  | Redirect             | Possible unprotected redirect near line 78: redirec>>
+| Weak       | LinesController         | update  | Redirect             | Possible unprotected redirect near line 103: redire>>
+| Weak       | MessagesController      | update  | Redirect             | Possible unprotected redirect near line 77: redirec>>
+| Weak       | PostsController         | update  | Redirect             | Possible unprotected redirect near line 63: redirec>>
+| Weak       | QuizesController        | update  | Redirect             | Possible unprotected redirect near line 79: redirec>>
+| Weak       | RelationshipsController | create  | Redirect             | Possible unprotected redirect near line 8: redirect>>
+| Weak       | RelationshipsController | destroy | Redirect             | Possible unprotected redirect near line 17: redirec>>
+| Weak       | SmartsController        | update  | Redirect             | Possible unprotected redirect near line 113: redire>>
+| Weak       | TodosController         | update  | Redirect             | Possible unprotected redirect near line 67: redirec>>
+| Weak       | UsersController         | update  | Redirect             | Possible unprotected redirect near line 67: redirec>>
++---------------------------------------------------------------------------------------------------------------------------->>
+
+Model Warnings:
+
++---------------------------------------------------------------------------------------------------------------------------->>
+| Confidence |                          Model                          |     Warning Type      |                         Mess>>
++---------------------------------------------------------------------------------------------------------------------------->>
+| High       | Compare, Draft, Line, Message, Post, Quize, Smart, Todo | Attribute Restriction | Mass assignment is not restr>>
++---------------------------------------------------------------------------------------------------------------------------->>
+
+View Warnings:
+
++---------------------------------------------------------------------------------------------------------------------------->>
+| Confidence |                   Template                    |     Warning Type     |                                        >>
++---------------------------------------------------------------------------------------------------------------------------->>
+| High       | shared/_feed_item (Template:shared/_feed)     | Cross Site Scripting | Unescaped model attribute in link_to ne>>
+| High       | users/index (UsersController#index)           | Dynamic Render Path  | Render path is dynamic near line 5: ren>>
+| High       | users/show (UsersController#show)             | Dynamic Render Path  | Render path is dynamic near line 18: re>>
+| High       | users/show_follow (UsersController#following) | Dynamic Render Path  | Render path is dynamic near line 8: ren>>
+| Medium     | shared/_feed_item (Template:shared/_feed)     | Cross Site Scripting | Unescaped model attribute in link_to ne>>
+| Medium     | users/show_follow (UsersController#following) | Cross Site Scripting | Unescaped model attribute in link_to ne>>
+| Weak       | drafts/show (DraftsController#show)           | Cross Site Scripting | Unescaped model attribute near line 11:>>
++---------------------------------------------------------------------------------------------------------------------------->>
+

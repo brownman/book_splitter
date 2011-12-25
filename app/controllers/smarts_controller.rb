@@ -14,7 +14,8 @@ class SmartsController < ApplicationController
   def index
     @smarts = current_user.smarts
     #Smart.all
-    @smart = Smart.new(:user_id => @user.id)
+
+      @smart = current_user.smarts.new
     @smarts.each do |smart|
 
       begin  

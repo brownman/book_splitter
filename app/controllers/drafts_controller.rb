@@ -50,7 +50,7 @@ class DraftsController < ApplicationController
 
     respond_to do |format|
       if @draft.save
-        format.html { redirect_to(drafts_path, :flash => { :success => 'draft created.'}) }
+        format.html { redirect_to(compare_path(:id => @draft.compare_id), :flash => { :success => 'draft created.'}) }
         format.xml  { render :xml => @draft, :status => :created, :location => @draft }
       else
         format.html { render :action => "new" }

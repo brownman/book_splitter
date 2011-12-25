@@ -1,12 +1,16 @@
 class TodosController < ApplicationController
+  before_filter :authenticate
 
-  before_filter :find_user , :only => [:index, :new]
+  before_filter :authorized_user, :only => :destroy
+
+
+  #before_filter :find_user , :only => [:index, :new]
   # GET /todos
   # GET /todos.xml
   def index
   #  @todos = Todo.all
 
-  @todos = @user.todos
+  @todos = current_user.todos
     respond_to do |format|
       format.html # index.html.erb
       format.xml  { render :xml => @todos }
@@ -27,7 +31,7 @@ class TodosController < ApplicationController
   # GET /todos/new
   # GET /todos/new.xml
   def new
-    @todo = @user.todos.new
+    @todo = current_user.todos.new
     #Todo.new
 
     respond_to do |format|
@@ -38,17 +42,17 @@ class TodosController < ApplicationController
 
   # GET /todos/1/edit
   def edit
-    @todo = Todo.find(params[:id])
+    @todo = current_user.todos.find(params[:id])
   end
 
   # POST /todos
   # POST /todos.xml
   def create
-    @todo = Todo.new(params[:todo])
+    @todo = current_user.todos.new(params[:todo])
 
     respond_to do |format|
       if @todo.save
-        format.html { redirect_to(@todo, :notice => 'Todo was successfully created.') }
+        format.html { redirect_to(todos_path, :notice => 'Todo was successfully created.') }
         format.xml  { render :xml => @todo, :status => :created, :location => @todo }
       else
         format.html { render :action => "new" }
@@ -60,7 +64,7 @@ class TodosController < ApplicationController
   # PUT /todos/1
   # PUT /todos/1.xml
   def update
-    @todo = Todo.find(params[:id])
+    @todo = current_user.todos.find(params[:id])
 
     respond_to do |format|
       if @todo.update_attributes(params[:todo])
@@ -75,7 +79,7 @@ class TodosController < ApplicationController
 
   # DELETE /todos/1
   # DELETE /todos/1.xml
-  def destroy
+  def destroy1
     @todo = Todo.find(params[:id])
     @todo.destroy
 
@@ -84,8 +88,18 @@ class TodosController < ApplicationController
       format.xml  { head :ok }
     end
   end
+  def destroy
+    @todo.destroy
+    redirect_to todos_path, :flash => { :success => "Todo deleted!" }
+  end
+
+
   private
   def find_user
     @user = User.find(params[:user_id])
+  end
+  def authorized_user
+    @todo = current_user.todos.find_by_id(params[:id])
+    redirect_to root_path if @todo.nil?
   end
 end

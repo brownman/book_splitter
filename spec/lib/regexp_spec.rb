@@ -205,7 +205,7 @@ pending "create html tags for a story to highlight : for example: verbs"
     it '#gsub will find and replace all matches' do
       "one two-three".gsub(/t\w*/, 'number').should == 'one number-number' 
 
-      "one \n two\n -three".gsub(/\n\w*/, '~').should == 'one number-number' 
+     # "one \n two\n -three".gsub(/\n\w*/, '~').should == 'one number-number' 
     end
   end
 end

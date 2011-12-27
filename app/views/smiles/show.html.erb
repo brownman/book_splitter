@@ -1,0 +1,15 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Title:</b>
+  <%= @smile.title %>
+</p>
+
+<p>
+  <b>Rating:</b>
+  <%= @smile.rating %>
+</p>
+
+
+<%= link_to 'Edit', edit_smile_path(@smile) %> |
+<%= link_to 'Back', smiles_path %>

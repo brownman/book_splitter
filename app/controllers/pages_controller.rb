@@ -8,9 +8,9 @@ class PagesController < ApplicationController
       # compares_path , :id => current_user.id
       #@compares = current_user.compares
 
-      #@smarts = current_user.smarts
+      @smiles = current_user.smiles
 
-  #@smart = Smart.new(:user_id => current_user.id)
+  @smile = Smile.new(:user_id => current_user.id)
       #@todos = current_user.todos
 
       #@ideas = current_user.ideas

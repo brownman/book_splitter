@@ -72,7 +72,7 @@ class QuizesController < ApplicationController
   # PUT /quizes/1
   # PUT /quizes/1.xml
   def update
-    @quize = Quize.find(params[:id])
+    @quize = current_user.quizes.find(params[:id])
 
     respond_to do |format|
       if @quize.update_attributes(params[:quize])

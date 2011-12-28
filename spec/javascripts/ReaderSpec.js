@@ -164,7 +164,13 @@ describe("Reader", function() {
 
 
     it("cleans number by removing spaces and dashes", function() {
+
         expect(CreditCard.cleanNumber("123 4-5")).toEqual("12345");
+
+        var story_enc =  "1\n2\n 3".replace(/\n/g, "~");
+        expect(story_enc).toEqual("1~2~ 3");
+
+
     });
 
     it("validates based on mod 10", function() {

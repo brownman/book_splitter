@@ -1,0 +1,30 @@
+
+<div id='smiles_index'>
+<a>Listing smiles</a>
+
+<table>
+  <tr>
+    <th>Title</th>
+    <th>Rating</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @smiles.each do |smile| %>
+  <tr>
+    <td><%= smile.title %></td>
+    <td><%= smile.rating %></td>
+    <td><%= link_to 'Show', smile %></td>
+    <td><%= link_to 'Edit', edit_smile_path(smile) %></td>
+    <td><%= link_to 'Destroy', smile, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+
+<br />
+
+<%= render  'smiles/form' %>
+<%= link_to 'New Smile', new_smile_path %>
+</div>

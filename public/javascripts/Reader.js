@@ -65,8 +65,11 @@ var Splitter = {
 
                 var story_enc = str 
 
-                    var arr_symbols = [',', '!', '.', "?", ":", ";", "=", '\n']
+                story_enc =  story_enc.replace(/\n/g, " ");
+
+                    var arr_symbols = [',', '!', '.', "?", ":", ";", "=" ]
                     story_enc = this.replace(story_enc, arr_symbols);
+
 
 
                 //split   replace

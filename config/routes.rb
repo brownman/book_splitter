@@ -1,5 +1,7 @@
 SampleApp::Application.routes.draw do
 
+  resources :smiles
+
   resources :messages
 
   resources :lines

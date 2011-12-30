@@ -3,7 +3,9 @@ class User < ActiveRecord::Base
   attr_accessible :name, :email, :password, :password_confirmation
   
 
+
   has_many :smiles,    :dependent => :destroy
+  has_many :rules,    :dependent => :destroy
   has_many :compares,    :dependent => :destroy
   has_many :ideas,    :dependent => :destroy
 

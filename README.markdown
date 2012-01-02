@@ -4,7 +4,7 @@
 vesion:
 - fix: js:  add new-line ascii to list of end-line symbols
 - use travis-ci
-
+- fix heroku: git push heroku master
 
 
 done:

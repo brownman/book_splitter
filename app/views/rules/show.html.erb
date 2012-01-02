@@ -1,0 +1,25 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Name:</b>
+  <%= @rule.name %>
+</p>
+
+<p>
+  <b>Details:</b>
+  <%= @rule.details %>
+</p>
+
+<p>
+  <b>Examples:</b>
+  <%= @rule.examples %>
+</p>
+
+<p>
+  <b>User:</b>
+  <%= @rule.user_id %>
+</p>
+
+
+<%= link_to 'Edit', edit_rule_path(@rule) %> |
+<%= link_to 'Back', rules_path %>

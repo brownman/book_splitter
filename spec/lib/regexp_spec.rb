@@ -6,14 +6,14 @@ require 'spec_helper'
 # and converted to use with Rspec 
 
 describe Regexp do
- def __
+  def __
     'Fill in your answer here'
   end
 
   it 'has the right class' do
     /pattern/.class.should == Regexp
   end
-  
+
   it 'can search a string for matching content' do
     "some matching content"[/matchi/].should == "matchi"
   end
@@ -27,13 +27,13 @@ describe Regexp do
     "abbcccddddeeeee"[/az?/].should == 'a'
     #find all strings:della and del : '/del?l?/'
   end
-  
+
   it 'plus sign means one or more' do
     "abbcccddddeeeee"[/bc+/].should == 'bccc'
     #how to find all occurances of double-letter ?
     #macro: [abc letter]+
   end
-  
+
   it '* means zero or more' do
     "abbcccddddeeeee"[/ab*/].should == 'abb' 
     "abbcccddddeeeee"[/az*/].should == 'a'
@@ -56,7 +56,7 @@ describe Regexp do
     #
     # Why?
   end
-  
+
   describe 'optional matching from a set []' do
     it 'square brackets allow for optional matching from a set' do
       regex = /[cbr]at/
@@ -64,23 +64,23 @@ describe Regexp do
       "bat"[regex].should == 'bat'
       "rat"[regex].should == 'rat'
       "zat"[regex].should == nil
-     
+
 
       #find all verbs ends with do
       "mangando"[/do/].should == "do"
     end
-    
+
     it 'requires that at least one of the set matches' do
 
       regex = /[cbr]at/
       "at"[regex].should  == nil
     end
-    
+
     it '\d should match any digit' do
       "the number is 42"[/[0123456789]+/].should == '42'
       "the number is 42"[/\d+/].should == '42'
     end
-    
+
     it '- can be used to express ranges' do
 
       "the number is 42"[/[0-9]+/].should == "42"
@@ -90,27 +90,27 @@ describe Regexp do
       pending "how to make it get all the text and ws?"
       pending "how to make it get all the text but without ws?"
     end
-    
+
     it 'can be negated with a ^ character' do
       "the number is 42"[/[^0-9]+/].should == 'the number is '
       #pending "mangarsi"[/[^ais]*/].should == 'mngr'
       pending "howto: from mangarsi to mngr?"
     end
   end
-  
+
   describe 'special characters' do
     it '\s will catch white space' do
       " \nspace: \t\n"[/\s+/].should == " \n"
       pending 'how to remove all occurances of: /\n ?'
     end
-    
+
     it '\w will catch a whole word' do
       # NOTE:  This is more like how a programmer might define a word.
       "variable_1 = 42"[/[a-zA-Z0-9]+/].should == 'variable'
       "variable_1 zebra = 42"[/\w+/].should == 'variable_1'
       #how to overwrite default of w to exlude symbole: _
     end
-    
+
     it '. is a wild card character and will match anything besides a new line' do
       "abc\n123"[/a.+/].should == 'abc'
 
@@ -118,13 +118,13 @@ describe Regexp do
 
       pending "how to take everything but the newl ?"
     end
-    
+
     it 'can be negated with the uppercase version' do
       "the number is 42"[/\D+/].should == 'the number is '
       "space : \t\n"[/\S*/].should == 'space'
       "variable_1 = ? 42"[/\W+/].should == ' = ? '
     end
-    
+
     it '\A will anchor matches to the front of the string' do
       "startii end"[/\Astart/].should == 'start'
       "start end"[/\Aend/].should == nil
@@ -158,7 +158,7 @@ describe Regexp do
     it 'groups contents with parens' do
       "ahahaha"[/(ha)+/].should == 'hahaha'
     end
-    
+
     it 'will return a captured group by number (1-based indexing)' do
       "Gray, James"[/(\w+), (\w+)/, 1].should == 'Gray'
       "Gray, James"[/(\w+), (\w+)/, 2].should == 'James'
@@ -168,8 +168,8 @@ describe Regexp do
       "Name:  Gray, James"[/(\w+), (\w+)/].should == 'Gray, James' 
       $1.should == 'Gray' # the first capture
       $2.should == 'James' # the second capture
-pending 'how to do it with letters: mangarsi?'
-       
+      pending 'how to do it with letters: mangarsi?'
+
     end
 
     it '| means or' do
@@ -179,7 +179,7 @@ pending 'how to do it with letters: mangarsi?'
 
       "Jim Gray"[grays_regex, 1].should == nil 
       "Jim Gray"[grays_regex, 2].should == nil 
-   pending "how to do (zero or more) Gray" 
+      pending "how to do (zero or more) Gray" 
       # THINK ABOUT IT:
       #
       # Explain the difference between a character class ([...]) and alternation (|).
@@ -187,10 +187,12 @@ pending 'how to do it with letters: mangarsi?'
       # ------------------------------------------------------------------
     end
   end
- #functions: 
+  #functions: 
   describe 'other methods on string for matching' do
     it '#scan will find all matches' do
       "one two-three".scan(/\w+/).should == ['one', 'two', 'three']
+      "nice12 a!".scan( /[\W\d]/ ).should == ["1", "2", " ", "!"]
+
 
     end
 
@@ -199,13 +201,15 @@ pending 'how to do it with letters: mangarsi?'
       "one two-three".sub(/t\w*/, '2').should == 'one 2-three'
       "tone two-three"[/t\w*/].should == 'tone'
 
-pending "create html tags for a story to highlight : for example: verbs"
+      pending "create html tags for a story to highlight : for example: verbs"
     end
-    
+
     it '#gsub will find and replace all matches' do
       "one two-three".gsub(/t\w*/, 'number').should == 'one number-number' 
 
-     # "one \n two\n -three".gsub(/\n\w*/, '~').should == 'one number-number' 
+      "nice12 a!".gsub!( /[\W\d]/ , "").should == "nicea"
+
+      # "one \n two\n -three".gsub(/\n\w*/, '~').should == 'one number-number' 
     end
   end
 end

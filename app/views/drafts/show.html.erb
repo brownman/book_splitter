@@ -3,6 +3,11 @@
   
 <div data-id='<%= @draft.id %>' class='me'>
 
+<h1>regexp:
+
+  <%= show_regexp_result @draft %>
+  </h1>
+
   <div class='me1'>
   <a><%= @draft.title %></a>
 
@@ -31,7 +36,9 @@
   <%= link_to 'Back', compare_path(:id => @draft.compare_id) %>
 
 
+  <%= rich_text @draft %> 
 
+</div>
 
 
 </div>

@@ -24,6 +24,8 @@ class ComparesController < ApplicationController
 @drafts = @compare.drafts
 @quizes = @compare.quizes
 
+@hunters = current_user.hunters
+@hunter = current_user.hunters.new
 
     @quize = @compare.quizes.new
   #(:compare_id => @compare.id )

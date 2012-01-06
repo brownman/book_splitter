@@ -1,5 +1,7 @@
 SampleApp::Application.routes.draw do
 
+  resources :hunters
+
   resources :rules
 
   resources :smiles

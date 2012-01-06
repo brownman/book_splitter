@@ -40,5 +40,6 @@ module SampleApp
     config.filter_parameters += [:password]
 
     config.autoload_paths += %W(#{Rails.root}/lib)
+   config.autoload_paths += %W(#{Rails.root}/lib/rbp)
   end
 end

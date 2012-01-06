@@ -1,4 +1,5 @@
 source 'http://rubygems.org'
+gem 'prawn'
 gem 'ancestry'
 gem 'coderay'
 gem 'redcarpet'

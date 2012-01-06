@@ -1,6 +1,6 @@
 class DraftsController < ApplicationController
 
-  before_filter :find_compare , :only => [:index, :new]
+  before_filter :find_compare , :only => [:index, :new , :show]
   before_filter :authenticate
 
   before_filter :authorized_user, :only => [:destroy, :edit]
@@ -19,8 +19,22 @@ class DraftsController < ApplicationController
   # GET /drafts/1
   # GET /drafts/1.xml
   def show
-    @draft = Draft.find(params[:id])
+    @draft = @compare.drafts.find(params[:id])
+    #@regexp_result = []
+    #current_user.hunters.each do |hunter| 
+    #@regexp_result.push   hunter.regexp
 
+    #regexp =     Regexp.new hunter.regexp
+    #result = regexp.match @draft.content
+
+    #.push result 
+
+    @regexp_result = @draft.hunter_result
+    #(current_user.id)
+
+    #puts @regexp_result
+    #puts @regexp_result
+    puts @regexp_result
     respond_to do |format|
       format.html # show.html.erb
       format.xml  { render :xml => @draft }
@@ -83,42 +97,42 @@ class DraftsController < ApplicationController
 
     respond_to do |format|
       format.html {  redirect_to(
-           # @draft.compare_id  , 
-            compare_path(:id => @draft.compare_id ),
-            :notice => 'Draft was successfully deleted.'
-                     )
-        }
+        # @draft.compare_id  , 
+        compare_path(:id => @draft.compare_id ),
+        :notice => 'Draft was successfully deleted.'
+      )
+      }
 
       format.xml  { head :ok }
     end
   end
-    def destroy
+  def destroy
 
- @draft.destroy
+    @draft.destroy
     redirect_to drafts_path, :flash => { :success => "Draft deleted!" }
 
   end
   def push
-@draft = Draft.find(params[:id])
-#indexes = []
-#indexes <<
-str = params[:item2]
-puts str
-puts "OK OK "
+    @draft = Draft.find(params[:id])
+    #indexes = []
+    #indexes <<
+    str = params[:item2]
+    puts str
+    puts "OK OK "
 
-@draft.content = str 
-#+ str 
+    @draft.content = str 
+    #+ str 
 
     respond_to do |format|
       if @draft.save
-@last_save = Time.now - @draft.updated_at 
-puts @last_save
+        @last_save = Time.now - @draft.updated_at 
+        puts @last_save
         format.html { 
           redirect_to(
-           # @draft.compare_id  , 
+            # @draft.compare_id  , 
             compare_path(:id => @draft.compare_id ),
             :notice => 'Draft was successfully created.'
-                     )
+          )
         }
         format.js
       else
@@ -133,7 +147,7 @@ puts @last_save
   end
   def authorized_user
 
-   current_user.compares.each do |compare| 
+    current_user.compares.each do |compare| 
       found = compare.drafts.find_by_id(params[:id])
       @draft = found if found  
     end

@@ -30,7 +30,7 @@
     <td><%= draft.content.length %></td>
     <td><%= draft.id %></td>
     <td><%= draft.title %></td>
-    <td><%= link_to 'Show', draft %></td>
+    <td><%= link_to 'Show', draft_path(:id => draft.id , :compare_id => @compare.id) %></td>
     
     <td><%= link_to 'Edit', edit_draft_path(draft) %></td>
     <td><%= link_to 'Destroy', draft, :confirm => 'Are you sure?', :method => :delete %></td>

@@ -16,6 +16,8 @@ class User < ActiveRecord::Base
   
 
   has_many :microposts,    :dependent => :destroy
+
+  has_many :hunters,    :dependent => :destroy
   has_many :messages,    :dependent => :destroy
 
   has_many :relationships, :dependent => :destroy,

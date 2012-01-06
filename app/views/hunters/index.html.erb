@@ -1,0 +1,28 @@
+<h1>Listing hunters</h1>
+
+<table>
+  <tr>
+    <th>Regexp</th>
+    <th>User</th>
+    <th>Result</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @hunters.each do |hunter| %>
+  <tr>
+    <td><%= hunter.regexp %></td>
+    <td><%= hunter.user_id %></td>
+    <td><%= hunter.result %></td>
+    <td><%= link_to 'Show', hunter %></td>
+    <td><%= link_to 'Edit', edit_hunter_path(hunter) %></td>
+    <td><%= link_to 'Destroy', hunter, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+<%=  render 'hunters/form' %>
+<%= link_to 'New Hunter', new_hunter_path(:user_id => current_user.id) %>
+

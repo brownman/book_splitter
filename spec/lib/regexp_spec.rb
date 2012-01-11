@@ -211,6 +211,29 @@ describe Regexp do
 
       # "one \n two\n -three".gsub(/\n\w*/, '~').should == 'one number-number' 
     end
+    it 'start to end' do
+      str = 'az vzbc'
+      result = str[/^a[ zv]*bc$/]
+
+      result.should == 'az vzbc'
+
+    end
+    it 'panctuation words panctuation' do
+      res = /W[aeiou]+rd/.match("Wierd")
+      res.to_s.should  == 'Wierd'
+
+
+    end
+    it 'rise exception' do
+   lambda { eval "/(hay(st)ack/" }.should raise_error(SyntaxError)
+
+    end
+it 'non-capture group' do
+    /(?:foo)(bar)/.match("foobar").to_a.should == ["foobar", "bar"]
+
+end
+
+
   end
 end
 

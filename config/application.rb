@@ -41,5 +41,6 @@ module SampleApp
 
     config.autoload_paths += %W(#{Rails.root}/lib)
    config.autoload_paths += %W(#{Rails.root}/lib/rbp)
+  config.autoload_paths += %W(#{Rails.root}/lib/rrrex/lib)
   end
 end

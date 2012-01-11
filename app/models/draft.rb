@@ -8,7 +8,7 @@ class Draft < ActiveRecord::Base
     user_id   = compare.user_id   
     user = User.find_by_id(user_id)
 
-    str_res = self.content  #duplicate the text
+    str_res = self.content.clone  #duplicate the text
 
     user.hunters.each do |hunter| 
 

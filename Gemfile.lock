@@ -34,7 +34,7 @@ GEM
     annotate (2.4.0)
     arel (2.0.10)
     builder (2.1.2)
-    childprocess (0.2.4)
+    childprocess (0.2.6)
       ffi (~> 1.0.6)
     coderay (1.0.5)
     diff-lcs (1.1.3)
@@ -56,6 +56,9 @@ GEM
     guard-spork (0.5.0)
       guard (>= 0.10.0)
       spork (>= 0.8.4)
+    guard-test (0.4.3)
+      guard (>= 0.4)
+      test-unit (~> 2.2)
     i18n (0.5.0)
     jasmine (1.1.2)
       jasmine-core (>= 1.1.0)
@@ -67,13 +70,16 @@ GEM
       railties (~> 3.0)
       thor (~> 0.14)
     json (1.6.4)
-    libnotify (0.7.0)
+    libnotify (0.7.1)
     mail (2.2.19)
       activesupport (>= 2.3.6)
       i18n (>= 0.4.0)
       mime-types (~> 1.16)
       treetop (~> 1.4.8)
+    metaclass (0.0.1)
     mime-types (1.17.2)
+    mocha (0.10.0)
+      metaclass (~> 0.0.1)
     multi_json (1.0.4)
     nokogiri (1.5.0)
     pdf-reader (0.10.1)
@@ -122,13 +128,14 @@ GEM
       railties (~> 3.0)
       rspec (~> 2.6.0)
     rubyzip (0.9.5)
-    selenium-webdriver (2.15.0)
-      childprocess (>= 0.2.1)
+    selenium-webdriver (2.16.0)
+      childprocess (>= 0.2.5)
       ffi (~> 1.0.9)
       multi_json (~> 1.0.4)
       rubyzip
     spork (0.9.0.rc9)
     sqlite3 (1.3.3)
+    test-unit (2.4.4)
     thor (0.14.6)
     treetop (1.4.10)
       polyglot
@@ -154,9 +161,11 @@ DEPENDENCIES
   gravatar_image_tag (= 1.0.0.pre2)
   guard-rspec
   guard-spork
+  guard-test
   jasmine
   jquery-rails
   libnotify
+  mocha
   prawn
   rails (= 3.0.9)
   rb-fsevent

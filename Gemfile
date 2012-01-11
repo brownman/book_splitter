@@ -1,4 +1,5 @@
 source 'http://rubygems.org'
+
 gem 'prawn'
 gem 'ancestry'
 gem 'coderay'
@@ -18,19 +19,20 @@ group :development do
 end
 
 group :test do
-
-gem 'jasmine'
+  gem 'guard-test'
+  gem 'mocha'
+  gem 'jasmine'
   gem 'rspec-rails', '2.6.1'
   gem 'webrat', '0.7.1'
-#  gem 'spork', '0.9.0.rc8'
+  #  gem 'spork', '0.9.0.rc8'
   gem 'factory_girl_rails', '1.0'
 
   gem 'rb-fsevent'
   gem "spork", "> 0.9.0.rc"
   gem "guard-rspec"
-gem 'rb-inotify'
+  gem 'rb-inotify'
 
-gem 'libnotify'
+  gem 'libnotify'
   gem "guard-spork"
   # gem 'autotest', '4.4.6'
   # gem 'autotest-rails-pure', '4.1.2'

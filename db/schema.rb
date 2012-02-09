@@ -10,7 +10,16 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120105000514) do
+ActiveRecord::Schema.define(:version => 20120115102120) do
+
+  create_table "assemblers", :force => true do |t|
+    t.integer  "user_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "quizable_id"
+    t.string   "quizable_type"
+    t.string   "chapter"
+  end
 
   create_table "compares", :force => true do |t|
     t.string   "title"
@@ -18,6 +27,8 @@ ActiveRecord::Schema.define(:version => 20120105000514) do
     t.datetime "updated_at"
     t.integer  "user_id"
     t.text     "note"
+    t.integer  "quizable_id"
+    t.string   "quizable_type"
   end
 
   create_table "drafts", :force => true do |t|
@@ -82,6 +93,8 @@ ActiveRecord::Schema.define(:version => 20120105000514) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "compare_id"
+    t.integer  "quizable_id"
+    t.string   "quizable_type"
   end
 
   create_table "relationships", :force => true do |t|
@@ -121,6 +134,14 @@ ActiveRecord::Schema.define(:version => 20120105000514) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "user_id"
+  end
+
+  create_table "thanks", :force => true do |t|
+    t.string   "opening"
+    t.string   "ending"
+    t.integer  "user_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "todos", :force => true do |t|

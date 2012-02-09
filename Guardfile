@@ -1,3 +1,5 @@
+
+
 guard 'spork', :cucumber_env => { 'RAILS_ENV' => 'test' }, :rspec_env => { 'RAILS_ENV' => 'test' } do
   watch('config/application.rb')
   watch('config/environment.rb')
@@ -25,6 +27,13 @@ guard 'rspec', :version => 2, :cli => "--drb", :all_on_start => false, :all_afte
   watch(%r{^app/views/(.+)/.*\.(erb|haml)$})          { |m| "spec/requests/#{m[1]}_spec.rb" }
 end
 
+guard 'livereload', :port => '35729' do
+
+  watch(%r{app/.+\.(erb|haml)})
+  watch(%r{app/helpers/.+\.rb})
+  watch(%r{public/.+\.(css|js|html)})
+  watch(%r{config/locales/.+\.yml})
+end
 #guard :test do
 
 #guard 'test' , :all_on_start => false, :all_after_pass => false do
@@ -38,3 +47,6 @@ end
   #watch(%r{^app/views/.+\.rb$})                      { "test/integration" }
   #watch('app/controllers/application_controller.rb') { ["test/functional", "test/integration"] }
 #end
+
+
+

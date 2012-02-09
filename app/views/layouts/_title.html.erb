@@ -1,0 +1,53 @@
+<style>
+  .toggler { width: 500px; height: 200px; position: relative; }
+  #button { padding: .5em 1em; text-decoration: none; }
+  #effect { width: 240px; height: 135px; padding: 0.4em; position: relative; background: #fff; }
+  #effect h3 { margin: 0; padding: 0.4em; text-align: center; }
+</style>
+<script>
+  $(function() {
+    $( "#button" ).toggle(
+    function() {
+      $( "#effect" ).animate({
+        backgroundColor: "#aa0000",
+        color: "#fff",
+        width: 500
+      }, 1000 );
+    },
+    function() {
+      $( "#effect" ).animate({
+        backgroundColor: "#fff",
+        color: "#000",
+        width: 240
+      }, 1000 );
+    }
+    );
+  });
+</script>
+
+
+
+<div class="demo">
+
+  <div class="toggler">
+    <div id="effect" class="ui-widget-content ui-corner-all">
+      <h3 class="ui-widget-header ui-corner-all">why?</h3>
+      <p>
+        Book-Splitter application:
+        
+        input:
+           - enter a text (such as: a book first page or chapter)
+           
+        output:
+           - read the book and its translation - line by line 
+           - save words in a glossary and check your memmory through a quiz
+      </p>
+    </div>
+  </div>
+
+  <a href="#" id="button" class="ui-state-default ui-corner-all">Toggle Effect</a>
+
+</div><!-- End demo -->
+
+
+

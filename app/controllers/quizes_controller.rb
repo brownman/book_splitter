@@ -1,6 +1,5 @@
 class QuizesController < ApplicationController
-
-  before_filter :find_compare , :only => [:index, :new]
+#  before_filter :find_quizable , :only => [:index, :new, :update]
   before_filter :authenticate
 
   before_filter :authorized_user, :only => [:destroy, :edit]
@@ -8,8 +7,47 @@ class QuizesController < ApplicationController
 
   # GET /quizes
   # GET /quizes.xml
-  def index
-    @quizes = @compare.quizes
+
+# quizes_controller
+def index
+  @quizable = find_quizable
+
+
+    flash[:notice] =  'what is quizable? ' + @quizable.to_s
+    #flash[:success] =  @quizable.to_s
+    @quizes = @quizable.quizes
+    @quize = @quizable.quizes.new
+end
+
+def create2
+  
+  #@quizeable = find_quizable
+  @quize = Quize.new(params[:quize])
+
+#obj = @quize.quizable_type 
+#obj.constantize
+#@quize.quizable_id
+
+#    @quizable.quizes.
+  #
+     if @quize.save
+    #flash[:notice] = "Successfully created quize."
+
+    flash[:success] = "Successfully created quize."
+    redirect_to :id => nil
+  else
+    render :action => 'new'
+  end
+
+     
+end
+
+
+  def index1
+ @quizeable = find_quizeable
+  @quizes = @quizeable.quizes
+
+    @quizes = @quizable.quizes
 
     respond_to do |format|
       format.html # index.html.erb
@@ -20,7 +58,9 @@ class QuizesController < ApplicationController
   # GET /quizes/1
   # GET /quizes/1.xml
   def show
-    @quize = @compare.quizes.find(params[:id])
+ @quizable = find_quizable
+
+    @quize = @quizable.quizes.find(params[:id])
 
     respond_to do |format|
       format.html # show.html.erb
@@ -31,7 +71,9 @@ class QuizesController < ApplicationController
   # GET /quizes/new
   # GET /quizes/new.xml
   def new
-    @quize = @compare.quizes.new
+ @quizable = find_quizable
+
+    @quize = @quizable.quizes.new
 
     respond_to do |format|
       format.html # new.html.erb
@@ -41,22 +83,30 @@ class QuizesController < ApplicationController
 
   # GET /quizes/1/edit
   def edit
-    @quize = @compare.find(params[:id])
+    @quize = @quizable.find(params[:id])
   end
 
   # POST /quizes
   # POST /quizes.xml
   def create
+    @paramss = find_params
+ @quizable = find_quizable
+
     @quize = Quize.new(params[:quize])
 
-    @compare = Compare.find(params[:quize][:compare_id])
-    @quizes = @compare.quizes
+    #@quizable = quizable.find(params[:quize][:quizable_id])
+    #@quizes = @quizable.quizes
+    
+#class_name = @quize.quizable_type
+#classify.constantize.
 
     respond_to do |format|
 
       if @quize.save
 
-        @quize = Quize.new(:compare_id => @compare.id)
+        @quize = @quizable.quizes.new
+        @quizes = @quizable.quizes
+        #(:quizable_id => @quizable.id)
         format.html { redirect_to quizes_path, :flash => { :success => "quize created!" } }
 
         format.xml  { render :xml => @quize, :status => :created, :location => @quize }
@@ -72,7 +122,7 @@ class QuizesController < ApplicationController
   # PUT /quizes/1
   # PUT /quizes/1.xml
   def update
-    @quize = current_user.quizes.find(params[:id])
+    @quize = @quizable.quizes.find(params[:id])
 
     respond_to do |format|
       if @quize.update_attributes(params[:quize])
@@ -108,14 +158,30 @@ class QuizesController < ApplicationController
     redirect_to quizes_path, :flash => { :success => "Quize deleted!" }
 
   end
-  private
-  def find_compare
-    @compare = Compare.find(params[:compare_id])
+private
+def find_params
+  params
+end
+
+def find_quizable
+  
+  puts params
+  
+  params.each do |name, value|
+    if name =~ /(.+)_id$/
+      return $1.classify.constantize.find(value)
+    end
   end
+  nil
+end
+
+#  def find_quizable
+#    @quizable = quizable.find(params[:quizable_id])
+#  end
   def authorized_user
 
-   current_user.compares.each do |compare| 
-      found = compare.quizes.find_by_id(params[:id])
+   current_user.quizables.each do |quizable| 
+      found = quizable.quizes.find_by_id(params[:id])
       @quize = found if found  
     end
     redirect_to root_path if @quize.nil?

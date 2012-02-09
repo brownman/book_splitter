@@ -3,7 +3,7 @@ class Smile < ActiveRecord::Base
 
 
   validates :title, :presence => true, :length => { :minimum => 1 }
-  validates :rating, :presence => true
+ # validates :rating, :presence => true
     #, :length => { :maximum => 1000 }
   validates :user_id, :presence => true
 end

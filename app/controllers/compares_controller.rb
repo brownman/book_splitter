@@ -110,4 +110,5 @@ class ComparesController < ApplicationController
     @compare = current_user.compares.find_by_id(params[:id])
     redirect_to root_path if @compare.nil?
   end
+
 end

@@ -4,9 +4,16 @@
     <title><%= title %></title>
     <%= csrf_meta_tag %>
     <%= render 'layouts/stylesheets' %>
-    <%= javascript_include_tag :defaults , "Reader" %>
+    <%= javascript_include_tag :defaults , "Reader" , "jquery.hotkeys", "jquery.labelify" %>
   </head>
   <body>
+    <%= 
+#render 'layouts/title'
+ %>
+    
+    <%= 
+#render 'layouts/select'
+ %>
     <div class="container">
       <%= render 'layouts/header' %>
       <section class="round">

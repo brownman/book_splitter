@@ -1,9 +1,16 @@
 class Quize < ActiveRecord::Base
-  belongs_to :compare
+#  belongs_to :user
+#belongs_to :quizable, :polymorphic => true
+  belongs_to :quizable, :dependent => :destroy, :polymorphic => true
 
-  validates :compare_id, :presence => true
+
+ # validates :compare_id, :presence => true
 
   validates :question, :presence => true, :length => {:minimum => 1}
+
+  validates :quizable_type, :presence => true
+  
+  validates :quizable_id, :presence => true
 end
 
 # == Schema Information

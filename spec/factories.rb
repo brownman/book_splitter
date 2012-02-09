@@ -17,9 +17,19 @@ Factory.define :micropost do |micropost|
   micropost.content "Foo bar"
   micropost.association :user
 end
-Factory.define :compare do |compare|
+Factory.define :compare , :class => Compare do |compare|
   compare.title "Foo bar"
   compare.association :user
+ # compare.after_create {|a| Factory(:quize, :quizable => a)}
+ # compare.quizes { |d| [d.association(:quize)] }
+
+end
+Factory.define :assembler , :class => Assembler do |c|
+  c.chapter "Foo bar"
+  c.association :user
+ # compare.after_create {|a| Factory(:quize, :quizable => a)}
+ # compare.quizes { |d| [d.association(:quize)] }
+
 end
 
 Factory.define :idea do |idea|
@@ -44,7 +54,9 @@ end
 Factory.define :quize do |quize|
   quize.question "1+3"
   #  message.user_id 2
-  quize.association :compare
+  #quize.association :compare
+  #quize.association :quizable, :factory => :compare
+
 end
 Factory.define :draft do |draft|
   draft.title "eng"

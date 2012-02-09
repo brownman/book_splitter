@@ -1,5 +1,8 @@
 SampleApp::Application.routes.draw do
 
+  resources :assemblers 
+  #, :has_many => :quizes
+
   resources :hunters
 
   resources :rules
@@ -24,7 +27,9 @@ SampleApp::Application.routes.draw do
 
   resources :posts
 
-  resources :compares
+  resources :compares 
+  #, :has_many => :quizes
+
 
   resources :drafts do
     member do

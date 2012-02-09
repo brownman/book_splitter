@@ -1,0 +1,26 @@
+<h1>Listing assemblers</h1>
+
+<table>
+  <tr>
+    <th>User</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @assemblers.each do |assembler| %>
+  <tr>
+    <td><%= assembler.user_id %></td>
+    <td><%= link_to 'Show', assembler %></td>
+    <td><%= link_to 'Edit', edit_assembler_path(assembler) %></td>
+    <td><%= link_to 'Destroy', assembler, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+
+
+
+<%= link_to 'New Assembler', new_assembler_path %>

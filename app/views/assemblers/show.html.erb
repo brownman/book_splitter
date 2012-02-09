@@ -1,0 +1,13 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>User:</b>
+  <%= @assembler.user_id %>
+</p>
+
+
+<p>
+   <%= render :template => 'quizes/index' %>
+</p>
+<%= link_to 'Edit', edit_assembler_path(@assembler) %> |
+<%= link_to 'Back', assemblers_path %>

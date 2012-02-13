@@ -2,6 +2,71 @@ require 'spec_helper'
 
 
 describe 'security tube - asm - part1' do
+  describe 'c.lang: when a variable is defined - or a func is called - the stack reflect it..so: ' do
+    'example.c
+    main()
+    {
+    int x;
+    }
+    &x is the last element pushed to the stack - outcome are:
+  - stack.0 -  has &x
+  - stack.1 -  has reg.ebp-old 
+  - stack.2 -  has return_address=the line after main is called.
+
+  there for: an access to the stack is possible by using: &x
+
+
+  int*(x.address)+0 --> stack.0
+  int*(x.address)+1 --> stack.1
+  int*(x.address)+2 --> stack.2
+    '
+  end
+  
+  describe 'sizes' do
+    '
+bit A single binary digit, that can have either value 0 or 1.
+byte 8 bits.
+nybble 4 bits.
+*int address ---- word 32 bits
+halfword 16 bits
+doubleword 64 bits
+    '
+
+  end
+  describe 'printing with gdb' do
+
+    describe 'asm.lang' do
+      it 'show the last 8 stack elements:'  do
+        'x/8xw $esp'
+      end
+    end
+
+    describe 'c.lang' do
+      it 'char shellcode[]' do
+        'print &variable - show address in hex'
+      end
+    end
+
+  end
+  describe 'addressing in c program' do
+    #http://publications.gbdirect.co.uk/c_book/chapter5/pointers.html
+    describe 'the address of: ' do
+      describe 'char shellcode[]' do
+
+        it 'divide the char_array to word-units' do
+
+          'int *ret = (int)shellcode'
+        end
+        it 'access the 2nd 32bits/word' do
+          'ret[1]'
+
+        end
+      end
+
+    end
+
+  end
+
   describe 'system consist of:' do
     it '3 parts:' do 
       "io device, memory , cpu"

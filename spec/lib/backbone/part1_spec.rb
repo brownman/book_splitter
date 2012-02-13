@@ -3,6 +3,14 @@
 #Backbone supplies structure to JavaScript-heavy applications by providing models with key-value binding and custom events, collections with a rich API of enumerable functions, views with declarative event handling, and connects it all to your existing application over a RESTful JSON interface
 #http://backbonejs.org/#Model
 require 'spec_helper'
+describe 'lessons' do
+#http://arturadib.com/hello-backbonejs/docs/1.html
+  describe 'lesson1 ' do
+    it '' do
+
+    end
+  end
+end
 describe 'backbone - browsing and playing albums' do
 
   describe 'general' do
@@ -16,9 +24,14 @@ describe 'backbone - browsing and playing albums' do
 
   describe 'mvc' do
     describe 'model' do
+#An implementation of the ActiveRecord pattern, but using JSON and a RESTful API instead of directly interfacing with a database.
+      #
+      #http://liquidmedia.ca/category/blog/
+
 
     end
     describe 'view' do
+#bind your view's render function to the model's "change" event
 
     end
 

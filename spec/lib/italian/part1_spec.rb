@@ -184,9 +184,76 @@ describe 'italian - part 1' do
       'i eat -presso a- genitori' #at heb.EZEL
       'i sit -addosso a/sopra- the elafent back'# on
       'i bring gift -a cagione- his bearthday' #as.. heb.LEREGEL
-      'page 96'.should == false
     end
   end
 
+  it 'maniera' do
+
+    'almeno - atleast'
+    'affatto  - heb.LEGAMRII'
+    'anzi - the opposite'
+    'altrimenti - heb.ACHERET'
+
+  end
+  it 'sometimes' do
+
+    'often - talvolta, spesso'
+    'saldom - di rado'
+
+  end
+  it 'adverb of quantity' do
+    'around/about - circa'
+    'non at all - mica/punto'
+    'only - soltanto, solamente' #note: sontanti = sono tanti #di-solito=as usual
+    ''
+  end
+  #p 103
+  describe 'il modo di verbi' do
+    #false.should == true
+    it 'participio' do
+      #: actual noun or describe the noun: -heb.beinoni-paul
+
+      #as noun
+      'di amante ama il amato' #the lover is loving the being-loved
+      'di persuante parla a persuaso' #the persuader is talking to the being-persuaded
+      #adjective
+      'siamo amanti di sion'
+      'lui credente in dio '
+    end
+    it 'il gerundio' do
+      #background for the action     
+      'scrivendo la lettera , pianse'
+
+    end
+    it 'pastsato: 5 types:' do
+      'imperfetto(action finished but the time isnot the issua, or unknown)- '
+
+
+      'present-perfect( action still ongoing ): prossimo'
+      'tra-passato-prossimo: 1.appena ebbe terminato la lettera - 2.il suo amico entro nella camera'#only when..1 - 2 happend, just as..1 - 2 accoured
+
+      'simple-past(action finished in particular time): remoto: dante scrisse la -divina-commedia-'
+      'tra-passato-remoto: 2.quando tu entrasti, 1.tuo padre era gia uscito'#when2 already 1
+
+
+    end
+  end
+  describe 'pinocchio' do
+    it 'passato remoto' do 
+      '1 have seen'  
+      '1 as soon as he saw that peace of wood'
+      '1 appena ebbe visto quel pezzo di legno'
+
+      
+      '2 but was like talking to a wall'
+      '2 ma fu come dire al muro'
+
+      '3 just as the three doctors went out the room'
+      '3   Appena i tre medici furono usciti di camera '
+      #'  fui comprato dal Direttore '
+    end
+
+
+  end
 
 end
